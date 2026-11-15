@@ -89,7 +89,7 @@ class WebCourseImporterTest {
     }
 
     @Test
-    fun parseWebPayloadResolvesRelativeGreekAudioUrls() {
+    fun parseWebPayloadResolvesRelativeGreekAudioUrls() = runBlocking {
         val json = """
             {
               "courseId": "greek_audio_test",
