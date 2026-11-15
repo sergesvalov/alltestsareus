@@ -1,0 +1,538 @@
+{
+  "courseId": "languages_greek_verbs_a_top20",
+  "category": "languages",
+  "version": 4,
+  "title": "Греческий язык: 20 самых популярных глаголов группы Α",
+  "description": "Полный тренажёр по 20 базовым глаголам 1-го спряжения (Ομάδα Α, безударное -ω): значения, транскрипция, спряжение, фразы и озвучка на греческом.",
+  "author": "Ellinika Memory Lab",
+  "speechLang": "el-GR",
+  "sourceWebUrl": "http://192.168.0.225:8085/index.html",
+  "lessons": [
+    {
+      "lessonId": "greek_verbs_a_lesson_1",
+      "title": "Урок 1: Первые 10 глаголов группы Α (кάνω — δίνω)",
+      "summary": "Базовые глаголы действия и восприятия: κάνω, έχω, θέλω, ξέρω, βλέπω, ακούω, λέω, πηγαίνω, παίρνω, δίνω.",
+      "theory": [
+        {
+          "title": "Что такое греческие глаголы группы Α (Ομάδα Α)?",
+          "body": "В новогреческом языке глаголы делятся на 2 большие группы спряжения. К **группе Α** относятся глаголы, у которых в 1-м лице единственного числа («я») **ударение НЕ падает на последнее -ω** (например: **κάνω**, **θέλω**, **γράφω**).\n\nЕдиная схема окончаний группы Α в настоящем времени (*Ενεστώτας*):\n- εγώ (я): **-ω** (*κάνω*)\n- εσύ (ты): **-εις** (*κάνεις*)\n- αυτός/αυτή/αυτό (он/она/оно): **-ει** (*κάνει*)\n- εμείς (мы): **-ουμε** (*κάνουμε*)\n- εσείς (вы): **-ετε** (*κάνετε*)\n- αυτοί/αυτές/αυτά (они): **-ουν(ε)** (*κάνουν*)"
+        },
+        {
+          "title": "Топ-10 глаголов первой части (учим сразу с ударением)",
+          "body": "1. **κάνω** [кАно] — делать\n2. **έχω** [Эхо] — иметь (*Έχω χρόνο* — у меня есть время)\n3. **θέλω** [θЭло] — хотеть (*Θέλω καφέ* — хочу кофе)\n4. **ξέρω** [ксЭро] — знать, уметь (*Δεν ξέρω* — не знаю)\n5. **βλέπω** [влЭпо] — видеть, смотреть\n6. **ακούω** [акУо] — слушать, слышать\n7. **λέω** [лЭо] — говорить, сказать (*Τι λες;* — что говоришь?)\n8. **πηγαίνω** [пигЕно] (также кратк. **πάω**) — идти, ехать\n9. **παίρνω** [пЭрно] — брать, получать, звонить (*παίρνω τηλέφωνο*)\n10. **δίνω** [дИно] — давать"
+        }
+      ],
+      "concepts": [
+        {
+          "conceptId": "greek_a_01_kano",
+          "term": "κάνω [кАно]",
+          "definition": "делать (группа Α: κάνω, κάνεις, κάνει, κάνουμε, κάνετε, κάνουν).",
+          "audioText": "κάνω",
+          "audioUrl": "../audio/greek/01_kano.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_1",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Что означает греческий глагол «κάνω» (например, в вопросе «Τι κάνεις;»)?",
+              "audioText": "κάνω",
+              "audioUrl": "../audio/greek/01_kano.mp3",
+              "options": [
+                { "id": "a", "text": "делать (Τι κάνεις; — Как дела? / Что делаешь?)", "isCorrect": true },
+                { "id": "b", "text": "знать", "isCorrect": false },
+                { "id": "c", "text": "иметь", "isCorrect": false },
+                { "id": "d", "text": "брать", "isCorrect": false }
+              ],
+              "explanation": "κάνω — главный глагол действия «делать». Приветствие «Τι κάνεις;» буквально значит «Что ты делаешь?»."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_02_eho",
+          "term": "έχω [Эхо]",
+          "definition": "иметь (у меня есть — έχω, у тебя есть — έχεις).",
+          "audioText": "έχω",
+          "audioUrl": "../audio/greek/02_eho.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_2",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Как переводится фраза «Έχω ένα βιβλίο»?",
+              "audioText": "Έχω ένα βιβλίο",
+              "audioUrl": "../audio/greek/phrase_02.mp3",
+              "options": [
+                { "id": "a", "text": "У меня есть книга (я имею книгу)", "isCorrect": true },
+                { "id": "b", "text": "Я читаю книгу", "isCorrect": false },
+                { "id": "c", "text": "Я хочу книгу", "isCorrect": false },
+                { "id": "d", "text": "Я вижу книгу", "isCorrect": false }
+              ],
+              "explanation": "В греческом языке для «у меня есть» всегда используется глагол έχω (иметь)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_03_thelo",
+          "term": "θέλω [θЭло]",
+          "definition": "хотеть (θέλω να... — я хочу...).",
+          "audioText": "θέλω",
+          "audioUrl": "../audio/greek/03_thelo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_3",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какой глагол означает «хотеть»?",
+              "options": [
+                { "id": "a", "text": "θέλω", "isCorrect": true },
+                { "id": "b", "text": "ξέρω", "isCorrect": false },
+                { "id": "c", "text": "δίνω", "isCorrect": false },
+                { "id": "d", "text": "μένω", "isCorrect": false }
+              ],
+              "explanation": "θέλω [θЭло] — хотеть. Например: Θέλω νερό (Я хочу воды)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_04_xero",
+          "term": "ξέρω [ксЭро]",
+          "definition": "знать, уметь (Δεν ξέρω — я не знаю).",
+          "audioText": "ξέρω",
+          "audioUrl": "../audio/greek/04_xero.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_4",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Выберите правильный перевод глагола «ξέρω»:",
+              "audioText": "ξέρω",
+              "audioUrl": "../audio/greek/04_xero.mp3",
+              "options": [
+                { "id": "a", "text": "знать, уметь", "isCorrect": true },
+                { "id": "b", "text": "слушать", "isCorrect": false },
+                { "id": "c", "text": "говорить", "isCorrect": false },
+                { "id": "d", "text": "ждать", "isCorrect": false }
+              ],
+              "explanation": "ξέρω [ксЭро] — знать (например, Ξέρω ελληνικά — Я знаю греческий)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_05_vlepo",
+          "term": "βλέπω [влЭпо]",
+          "definition": "видеть, смотреть (например, βλέπω τηλεόραση — смотрю телевизор).",
+          "audioText": "βλέπω",
+          "audioUrl": "../audio/greek/05_vlepo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_5",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Как по-гречески сказать «мы видим» (от глагола βλέπω)?",
+              "options": [
+                { "id": "a", "text": "βλέπουμε", "isCorrect": true },
+                { "id": "b", "text": "βλέπεις", "isCorrect": false },
+                { "id": "c", "text": "βλέπετε", "isCorrect": false },
+                { "id": "d", "text": "βλέπει", "isCorrect": false }
+              ],
+              "explanation": "βλέπω относится к группе Α: для местоимения εμείς (мы) добавляем окончание -ουμε -> βλέπουμε."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_06_akouo",
+          "term": "ακούω [акУо]",
+          "definition": "слушать, слышать (ακούω μουσική — слушаю музыку).",
+          "audioText": "ακούω",
+          "audioUrl": "../audio/greek/06_akouo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_6",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Что означает глагол «ακούω» (знакомый по слову «акустика»)?",
+              "audioText": "ακούω",
+              "audioUrl": "../audio/greek/06_akouo.mp3",
+              "options": [
+                { "id": "a", "text": "слушать, слышать", "isCorrect": true },
+                { "id": "b", "text": "открывать", "isCorrect": false },
+                { "id": "c", "text": "пить", "isCorrect": false },
+                { "id": "d", "text": "находить", "isCorrect": false }
+              ],
+              "explanation": "ακούω [акУо] — слушать/слышать. От этого же корня происходит слово «акустика»."
+            },
+            {
+              "questionId": "q_gr_6_mc",
+              "type": "MULTI_CHOICE",
+              "prompt": "Выберите ВСЕ греческие глаголы группы Α, связанные с восприятием (видеть, слышать) и речью:",
+              "options": [
+                { "id": "a", "text": "βλέπω (видеть, смотреть)", "isCorrect": true },
+                { "id": "b", "text": "ακούω (слушать, слышать)", "isCorrect": true },
+                { "id": "c", "text": "λέω (говорить, сказать)", "isCorrect": true },
+                { "id": "d", "text": "δίνω (давать)", "isCorrect": false },
+                { "id": "e", "text": "πηγαίνω (идти)", "isCorrect": false }
+              ],
+              "explanation": "βλέπω (видеть), ακούω (слышать) и λέω (говорить) — основные глаголы восприятия и общения."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_07_leo",
+          "term": "λέω [лЭо]",
+          "definition": "говорить, сказать (λέω, λες, λέει, λέμε, λέτε, λένε).",
+          "audioText": "λέω",
+          "audioUrl": "../audio/greek/07_leo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_7",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какой глагол означает «говорить / сказать»?",
+              "options": [
+                { "id": "a", "text": "λέω", "isCorrect": true },
+                { "id": "b", "text": "πίνω", "isCorrect": false },
+                { "id": "c", "text": "παίρνω", "isCorrect": false },
+                { "id": "d", "text": "κλείνω", "isCorrect": false }
+              ],
+              "explanation": "λέω — говорить/сказать. У него в настоящем времени часто встречаются краткие формы: λες (ты говоришь), λέει (он/она говорит)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_08_pigeno",
+          "term": "πηγαίνω [пигЕно]",
+          "definition": "идти, ехать, ходить (также используется краткая форма πάω).",
+          "audioText": "πηγαίνω",
+          "audioUrl": "../audio/greek/08_pigeno.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_8",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Что значит «Πηγαίνω στη δουλειά»?",
+              "audioText": "Πηγαίνω στη δουλειά",
+              "audioUrl": "../audio/greek/phrase_08.mp3",
+              "options": [
+                { "id": "a", "text": "Я иду / еду на работу", "isCorrect": true },
+                { "id": "b", "text": "Я остаюсь на работе", "isCorrect": false },
+                { "id": "c", "text": "Я ищу работу", "isCorrect": false },
+                { "id": "d", "text": "Я заканчиваю работу", "isCorrect": false }
+              ],
+              "explanation": "πηγαίνω (и краткая форма πάω) — идти, ехать, направляться куда-либо."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_09_perno",
+          "term": "παίρνω [пЭрно]",
+          "definition": "брать, взять, получать (а также παίρνω τηλέφωνο — звонить).",
+          "audioText": "παίρνω",
+          "audioUrl": "../audio/greek/09_perno.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_9",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какой перевод подходит к глаголу «παίρνω»?",
+              "audioText": "παίρνω",
+              "audioUrl": "../audio/greek/09_perno.mp3",
+              "options": [
+                { "id": "a", "text": "брать, получать", "isCorrect": true },
+                { "id": "b", "text": "давать", "isCorrect": false },
+                { "id": "c", "text": "писать", "isCorrect": false },
+                { "id": "d", "text": "ждать", "isCorrect": false }
+              ],
+              "explanation": "παίρνω [пЭрно] — брать. Не путать с «περνώ» (проходить)!"
+            },
+            {
+              "questionId": "q_gr_9_tf",
+              "type": "TRUE_FALSE",
+              "prompt": "Правда или Ложь: греческий глагол «παίρνω» означает «ДАВАТЬ».",
+              "audioText": "παίρνω",
+              "audioUrl": "../audio/greek/09_perno.mp3",
+              "correctBool": false,
+              "explanation": "Ложь! «παίρνω» значит «брать / получать», а «давать» — это «δίνω»."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_10_dino",
+          "term": "δίνω [дИно]",
+          "definition": "давать, передавать (антоним к παίρνω).",
+          "audioText": "δίνω",
+          "audioUrl": "../audio/greek/10_dino.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_10",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какой глагол является антонимом к «παίρνω» (брать) и означает «давать»?",
+              "options": [
+                { "id": "a", "text": "δίνω", "isCorrect": true },
+                { "id": "b", "text": "μένω", "isCorrect": false },
+                { "id": "c", "text": "βρίσκω", "isCorrect": false },
+                { "id": "d", "text": "ανοίγω", "isCorrect": false }
+              ],
+              "explanation": "δίνω [дИно] — давать. Например: Σου δίνω το κλειδί (Я даю тебе ключ)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lessonId": "greek_verbs_a_lesson_2",
+      "title": "Урок 2: Вторые 10 глаголов группы Α (διαβάζω — βρίσκω)",
+      "summary": "Повседневные глаголы: διαβάζω, γράφω, μένω, δουλεύω, πίνω, μαθαίνω, ανοίγω, κλείνω, περιμένω, βρίσκω.",
+      "theory": [
+        {
+          "title": "Топ-10 глаголов второй части",
+          "body": "11. **διαβάζω** [дьявАзо] — читать, учиться\n12. **γράφω** [грАфо] — писать\n13. **μένω** [мЭно] — жить (проживать по адресу), оставаться\n14. **δουλεύω** [дулЕво] — работать\n15. **πίνω** [пИно] — пить\n16. **μαθαίνω** [маθЭно] — учить, изучать, узнавать\n17. **ανοίγω** [анИго] — открывать\n18. **κλείνω** [клИно] — закрывать, бронировать\n19. **περιμένω** [перимЭно] — ждать\n20. **βρίσκω** [врИско] — находить"
+        },
+        {
+          "title": "Лайфхак для запоминания пар",
+          "body": "Учите глаголы контрастными парами:\n- **ανοίγω** (открывать) ↔ **κλείνω** (закрывать)\n- **διαβάζω** (читать) ↔ **γράφω** (писать)\n- **παίρνω** (брать) ↔ **δίνω** (давать)"
+        }
+      ],
+      "concepts": [
+        {
+          "conceptId": "greek_a_11_diavazo",
+          "term": "διαβάζω [дьявАзо]",
+          "definition": "читать, делать уроки, готовиться к экзамену.",
+          "audioText": "διαβάζω",
+          "audioUrl": "../audio/greek/11_diavazo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_11",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Что означает глагол «διαβάζω»?",
+              "audioText": "διαβάζω",
+              "audioUrl": "../audio/greek/11_diavazo.mp3",
+              "options": [
+                { "id": "a", "text": "читать, учиться", "isCorrect": true },
+                { "id": "b", "text": "писать", "isCorrect": false },
+                { "id": "c", "text": "работать", "isCorrect": false },
+                { "id": "d", "text": "жить", "isCorrect": false }
+              ],
+              "explanation": "διαβάζω — читать (книгу, газету), а также «заниматься / готовиться»."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_12_grafo",
+          "term": "γράφω [грАфо]",
+          "definition": "писать (однокоренное со словами «графика», «автограф»).",
+          "audioText": "γράφω",
+          "audioUrl": "../audio/greek/12_grafo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_12",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Как по-гречески будет «ты пишешь» (от глагола γράφω)?",
+              "options": [
+                { "id": "a", "text": "γράφεις", "isCorrect": true },
+                { "id": "b", "text": "γράφω", "isCorrect": false },
+                { "id": "c", "text": "γράφουν", "isCorrect": false },
+                { "id": "d", "text": "γράφετε", "isCorrect": false }
+              ],
+              "explanation": "Во 2-м лице ед. числа (εσύ — ты) в группе Α всегда окончание -εις -> γράφεις."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_13_meno",
+          "term": "μένω [мЭно]",
+          "definition": "жить (проживать в городе/квартире), а также «оставаться».",
+          "audioText": "μένω",
+          "audioUrl": "../audio/greek/13_meno.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_13",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какой глагол нужно вставить в фразу «Πού ___ ;» (Где ты живёшь?) -> «Μένω στην Αθήνα»?",
+              "options": [
+                { "id": "a", "text": "μένεις", "isCorrect": true },
+                { "id": "b", "text": "πίνεις", "isCorrect": false },
+                { "id": "c", "text": "κλείνεις", "isCorrect": false },
+                { "id": "d", "text": "βρίσκεις", "isCorrect": false }
+              ],
+              "explanation": "Для адреса и места жительства используется глагол μένω (жить / оставаться)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_14_doulevo",
+          "term": "δουλεύω [дулЕво]",
+          "definition": "работать (о людях и механизмах).",
+          "audioText": "δουλεύω",
+          "audioUrl": "../audio/greek/14_doulevo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_14",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Что значит «Δουλεύω κάθε μέρα»?",
+              "audioText": "Δουλεύω κάθε μέρα",
+              "audioUrl": "../audio/greek/phrase_14.mp3",
+              "options": [
+                { "id": "a", "text": "Я работаю каждый день", "isCorrect": true },
+                { "id": "b", "text": "Я учусь каждый день", "isCorrect": false },
+                { "id": "c", "text": "Я жду каждый день", "isCorrect": false },
+                { "id": "d", "text": "Я хожу каждый день", "isCorrect": false }
+              ],
+              "explanation": "δουλεύω [дулЕво] — работать (от существительного δουλειά — работа)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_15_pino",
+          "term": "πίνω [пИно]",
+          "definition": "пить (πίνω καφέ — пью кофе, πίνω νερό — пью воду).",
+          "audioText": "πίνω",
+          "audioUrl": "../audio/greek/15_pino.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_15",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Выберите правильное значение глагола «πίνω»:",
+              "audioText": "πίνω",
+              "audioUrl": "../audio/greek/15_pino.mp3",
+              "options": [
+                { "id": "a", "text": "пить", "isCorrect": true },
+                { "id": "b", "text": "брать", "isCorrect": false },
+                { "id": "c", "text": "знать", "isCorrect": false },
+                { "id": "d", "text": "видеть", "isCorrect": false }
+              ],
+              "explanation": "πίνω [пИно] — пить."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_16_matheno",
+          "term": "μαθαίνω [маθЭно]",
+          "definition": "учить, изучать, узнавать новость (μαθαίνω ελληνικά — учу греческий).",
+          "audioText": "μαθαίνω",
+          "audioUrl": "../audio/greek/16_matheno.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_16",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Как сказать «Мы изучаем греческий язык»?",
+              "options": [
+                { "id": "a", "text": "Μαθαίνουμε ελληνικά", "isCorrect": true },
+                { "id": "b", "text": "Ανοίγουμε ελληνικά", "isCorrect": false },
+                { "id": "c", "text": "Περιμένουμε ελληνικά", "isCorrect": false },
+                { "id": "d", "text": "Πίνουμε ελληνικά", "isCorrect": false }
+              ],
+              "explanation": "μαθαίνω (учить/узнавать) + окончание -ουμε (мы) -> Μαθαίνουμε."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_17_anigo",
+          "term": "ανοίγω [анИго]",
+          "definition": "открывать (дверь, окно, магазин, книгу).",
+          "audioText": "ανοίγω",
+          "audioUrl": "../audio/greek/17_anigo.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_17",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какой глагол означает «открывать»?",
+              "options": [
+                { "id": "a", "text": "ανοίγω", "isCorrect": true },
+                { "id": "b", "text": "κλείνω", "isCorrect": false },
+                { "id": "c", "text": "βρίσκω", "isCorrect": false },
+                { "id": "d", "text": "μένω", "isCorrect": false }
+              ],
+              "explanation": "ανοίγω — открывать (например, ανοίγω την πόρτα — открываю дверь)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_18_klino",
+          "term": "κλείνω [клИно]",
+          "definition": "закрывать (а также «бронировать» столик/билет и «завершать звонок»).",
+          "audioText": "κλείνω",
+          "audioUrl": "../audio/greek/18_klino.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_18",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Что означает антоним к «ανοίγω» — глагол «κλείνω»?",
+              "audioText": "κλείνω",
+              "audioUrl": "../audio/greek/18_klino.mp3",
+              "options": [
+                { "id": "a", "text": "закрывать (а также бронировать)", "isCorrect": true },
+                { "id": "b", "text": "открывать", "isCorrect": false },
+                { "id": "c", "text": "делать", "isCorrect": false },
+                { "id": "d", "text": "слушать", "isCorrect": false }
+              ],
+              "explanation": "κλείνω [клИно] — закрывать. В быту также значит «забронировать» (κλείνω ένα τραπέζι)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_19_perimeno",
+          "term": "περιμένω [перимЭно]",
+          "definition": "ждать, ожидать (περιμένω το λεωφορείο — жду автобус).",
+          "audioText": "περιμένω",
+          "audioUrl": "../audio/greek/19_perimeno.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_19",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Переведите предложение «Σε περιμένω!»:",
+              "audioText": "Σε περιμένω!",
+              "audioUrl": "../audio/greek/phrase_19.mp3",
+              "options": [
+                { "id": "a", "text": "Я тебя жду!", "isCorrect": true },
+                { "id": "b", "text": "Я тебя знаю!", "isCorrect": false },
+                { "id": "c", "text": "Я тебя слышу!", "isCorrect": false },
+                { "id": "d", "text": "Я тебя нахожу!", "isCorrect": false }
+              ],
+              "explanation": "περιμένω [перимЭно] — ждать. Буквально состоит из приставки περι- и глагола μένω (оставаться)."
+            }
+          ]
+        },
+        {
+          "conceptId": "greek_a_20_vrisko",
+          "term": "βρίσκω [врИско]",
+          "definition": "находить, отыскивать (βρίσκω, βρίσκεις, βρίσκει...).",
+          "audioText": "βρίσκω",
+          "audioUrl": "../audio/greek/20_vrisko.mp3",
+          "questions": [
+            {
+              "questionId": "q_gr_20",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Как по-гречески сказать «Он/она находит» (от глагола βρίσκω)?",
+              "options": [
+                { "id": "a", "text": "βρίσκει", "isCorrect": true },
+                { "id": "b", "text": "βρίσκω", "isCorrect": false },
+                { "id": "c", "text": "βρίσκουμε", "isCorrect": false },
+                { "id": "d", "text": "βρίσκουν", "isCorrect": false }
+              ],
+              "explanation": "Для 3-го лица ед. числа (αυτός/αυτή — он/она) в группе Α используется окончание -ει -> βρίσκει."
+            },
+            {
+              "questionId": "q_gr_20_tf",
+              "type": "TRUE_FALSE",
+              "prompt": "Правда или Ложь: в группе Α для местоимения εμείς (мы) всегда используется окончание -ουμε (например, βρίσκουμε, γράφουμε).",
+              "correctBool": true,
+              "explanation": "Правда! Стандартное окончание 1-го лица мн. числа в группе Α — это -ουμε."
+            },
+            {
+              "questionId": "q_gr_20_mc",
+              "type": "MULTI_CHOICE",
+              "prompt": "Отметьте ВСЕ формы, которые правильно проспряганы от глагола «γράφω» (писать, группа Α):",
+              "options": [
+                { "id": "a", "text": "εσύ γράφεις (ты пишешь)", "isCorrect": true },
+                { "id": "b", "text": "αυτός γράφει (он пишет)", "isCorrect": true },
+                { "id": "c", "text": "εμείς γράφουμε (мы пишем)", "isCorrect": true },
+                { "id": "d", "text": "εσείς γράφουν (вы пишете)", "isCorrect": false }
+              ],
+              "explanation": "Для εσείς (вы) правильная форма — γράφετε, а -ουν (γράφουν) относится к αυτοί (они)."
+            },
+            {
+              "questionId": "q_gr_21",
+              "type": "WORD_ORDER",
+              "prompt": "Соберите греческую фразу «Я хочу учить греческий»:",
+              "audioText": "Θέλω να μαθαίνω ελληνικά",
+              "audioUrl": "../audio/greek/phrase_21.mp3",
+              "wordTokens": ["Θέλω", "να", "μαθαίνω", "ελληνικά"],
+              "explanation": "В греческом языке два глагола соединяются частицей να: Θέλω να μαθαίνω ελληνικά."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

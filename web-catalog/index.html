@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AllTestsAreUs — Общий ресурс тестов, знаки КП и Греческие глаголы</title>
+  <link rel="icon" type="image/svg+xml" href="icons/app-hub.svg" />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #1e293b;
+      --primary: #38bdf8;
+      --orienteering: #10b981;
+      --reptiles: #eab308;
+      --languages: #a855f7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand h1 { margin: 0; font-size: 21px; }
+    .brand p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 15px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: #0f172a;
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+    .shared-banner {
+      max-width: 1120px;
+      margin: 18px auto 0;
+      padding: 0 24px;
+    }
+    .shared-box {
+      background: rgba(19, 47, 76, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 14px;
+    }
+    main {
+      max-width: 1120px;
+      margin: 20px auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 860px) {
+      main { grid-template-columns: 1fr; }
+    }
+    .course-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .course-card:hover, .course-card.selected {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .cat-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .cat-orienteering { background: rgba(16, 185, 129, 0.2); color: var(--orienteering); }
+    .cat-reptiles { background: rgba(234, 179, 8, 0.2); color: var(--reptiles); }
+    .cat-languages { background: rgba(168, 85, 247, 0.2); color: var(--languages); }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .lesson-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    .theory-box {
+      background: rgba(15, 23, 42, 0.65);
+      border-left: 4px solid var(--primary);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      white-space: pre-line;
+      line-height: 1.55;
+    }
+    .q-card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .q-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .iof-badge {
+      width: 64px;
+      height: 64px;
+      background: #ffffff;
+      border: 2px solid #334155;
+      border-radius: 10px;
+      padding: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .opt-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-top: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .opt-btn:hover { border-color: var(--primary); }
+    .opt-btn.correct { background: rgba(16, 185, 129, 0.25); border-color: #10b981; }
+    .opt-btn.wrong { background: rgba(239, 68, 68, 0.25); border-color: #ef4444; }
+    .action-btn {
+      background: var(--primary);
+      color: #0f172a;
+      border: none;
+      padding: 9px 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    code {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px 7px;
+      border-radius: 6px;
+      color: #38bdf8;
+    }
+    textarea {
+      width: 100%;
+      min-height: 220px;
+      background: #0f172a;
+      color: #38bdf8;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand" style="display:flex; align-items:center; gap:12px;">
+      <img src="icons/app-hub.svg" alt="AllTestsAreUs" width="40" height="40" style="border-radius:10px; flex-shrink:0;" />
+      <div>
+        <h1>AllTestsAreUs Web Hub</h1>
+        <p>Общий ресурс тестов, знаков КП ориентирования и греческих глаголов для Android (SM-2)</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="filterCategory('all', this)">Все темы</button>
+      <button class="tab-btn" onclick="filterCategory('orienteering', this)"><img src="icons/service-orienteering.svg" alt="" width="16" height="16" style="vertical-align:-3px; margin-right:5px; border-radius:4px;" />Ориентирование</button>
+      <button class="tab-btn" onclick="filterCategory('languages', this)"><img src="icons/service-languages.svg" alt="" width="16" height="16" style="vertical-align:-3px; margin-right:5px; border-radius:4px;" />Языки</button>
+      <button class="tab-btn" onclick="filterCategory('reptiles', this)"><img src="icons/service-reptiles.svg" alt="" width="16" height="16" style="vertical-align:-3px; margin-right:5px; border-radius:4px;" />Рептилии</button>
+      <button class="tab-btn" onclick="showBuilder(this)">➕ Создать веб-тест</button>
+    </div>
+  </header>
+
+  <div class="shared-banner">
+    <div class="shared-box">
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <img src="icons/service-web-sync.svg" alt="" width="20" height="20" style="border-radius:4px;" />
+        <strong>Общий ресурс (Endpoint для Android):</strong>
+        <code id="catalog-url-display">catalog.json</code>
+        <span id="load-source-badge" style="color: var(--muted); font-size: 12px; margin-left: 8px;"></span>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="action-btn" onclick="copyCatalogUrl()">📋 Копировать URL каталога</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <aside id="course-list"></aside>
+    <section class="panel" id="viewer-panel">
+      <h2>Загрузка каталога...</h2>
+    </section>
+  </main>
+
+  <script>
+    // SVG-библиотека условных знаков карты ISOM и пиктограмм IOF у КП
+    function renderIofSvg(code) {
+      if (!code) return '';
+      const svgs = {
+        // Коричневые знаки рельефа (ISOM)
+        isom_knoll: '<ellipse cx="24" cy="24" rx="13" ry="10" fill="none" stroke="#9a4d14" stroke-width="3.5"/><circle cx="24" cy="24" r="2.5" fill="#9a4d14"/>',
+        isom_pit: '<polyline points="11,14 24,36 37,14" fill="none" stroke="#9a4d14" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
+        isom_depression: '<ellipse cx="24" cy="24" rx="16" ry="12" fill="none" stroke="#9a4d14" stroke-width="3.5"/><line x1="24" y1="12" x2="24" y2="19" stroke="#9a4d14" stroke-width="3"/><line x1="24" y1="36" x2="24" y2="29" stroke="#9a4d14" stroke-width="3"/>',
+        isom_erosion_gully: '<polygon points="8,36 39,11 17,40" fill="#9a4d14"/>',
+        isom_earth_bank: '<line x1="6" y1="18" x2="42" y2="18" stroke="#9a4d14" stroke-width="4"/><line x1="12" y1="18" x2="12" y2="30" stroke="#9a4d14" stroke-width="3.5"/><line x1="24" y1="18" x2="24" y2="30" stroke="#9a4d14" stroke-width="3.5"/><line x1="36" y1="18" x2="36" y2="30" stroke="#9a4d14" stroke-width="3.5"/>',
+        isom_special_relief_x: '<line x1="11" y1="11" x2="37" y2="37" stroke="#9a4d14" stroke-width="4.5" stroke-linecap="round"/><line x1="37" y1="11" x2="11" y2="37" stroke="#9a4d14" stroke-width="4.5" stroke-linecap="round"/>',
+        // Чёрные знаки камней, скал, троп и построек (ISOM)
+        isom_boulder: '<circle cx="24" cy="24" r="9" fill="#111827"/>',
+        isom_boulder_cluster: '<polygon points="24,9 40,37 8,37" fill="#111827"/>',
+        isom_cliff: '<line x1="6" y1="18" x2="42" y2="18" stroke="#111827" stroke-width="4.5"/><line x1="12" y1="18" x2="12" y2="32" stroke="#111827" stroke-width="3.5"/><line x1="24" y1="18" x2="24" y2="32" stroke="#111827" stroke-width="3.5"/><line x1="36" y1="18" x2="36" y2="32" stroke="#111827" stroke-width="3.5"/>',
+        isom_rocky_pit: '<polyline points="11,14 24,36 37,14" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
+        isom_stone_wall: '<line x1="6" y1="24" x2="42" y2="24" stroke="#111827" stroke-width="3.5"/><circle cx="11" cy="24" r="3.5" fill="#111827"/><circle cx="24" cy="24" r="3.5" fill="#111827"/><circle cx="37" cy="24" r="3.5" fill="#111827"/>',
+        isom_ruin: '<polyline points="23,11 10,11 10,37 38,37 38,22" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round"/>',
+        isom_path_junction: '<line x1="7" y1="8" x2="41" y2="40" stroke="#111827" stroke-width="3.5" stroke-dasharray="6,4"/><line x1="41" y1="8" x2="7" y2="40" stroke="#111827" stroke-width="3.5" stroke-dasharray="6,4"/>',
+        isom_special_manmade_x: '<line x1="11" y1="11" x2="37" y2="37" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/><line x1="37" y1="11" x2="11" y2="37" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>',
+        isom_special_manmade_o: '<circle cx="24" cy="24" r="11" fill="none" stroke="#111827" stroke-width="4"/>',
+        // Синие знаки гидрографии (ISOM)
+        isom_marsh_passable: '<line x1="8" y1="14" x2="40" y2="14" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/><line x1="8" y1="24" x2="40" y2="24" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/><line x1="8" y1="34" x2="40" y2="34" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>',
+        isom_marsh_impassable: '<ellipse cx="24" cy="24" rx="17" ry="13" fill="none" stroke="#111827" stroke-width="3"/><line x1="10" y1="18" x2="38" y2="18" stroke="#0284c7" stroke-width="3.5"/><line x1="8" y1="24" x2="40" y2="24" stroke="#0284c7" stroke-width="3.5"/><line x1="10" y1="30" x2="38" y2="30" stroke="#0284c7" stroke-width="3.5"/>',
+        isom_waterhole: '<ellipse cx="24" cy="24" rx="14" ry="10" fill="#38bdf8" stroke="#111827" stroke-width="2.5"/>',
+        isom_spring: '<path d="M19,15 A7,9 0 1,0 19,33" fill="none" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/><line x1="20" y1="24" x2="40" y2="24" stroke="#0284c7" stroke-width="3.5" stroke-linecap="round"/>',
+        // Зелёные и жёлтые знаки растительности (ISOM)
+        isom_root_stock_veg: '<line x1="11" y1="11" x2="37" y2="37" stroke="#15803d" stroke-width="4.5" stroke-linecap="round"/><line x1="37" y1="11" x2="11" y2="37" stroke="#15803d" stroke-width="4.5" stroke-linecap="round"/>',
+        isom_distinct_tree: '<circle cx="24" cy="24" r="11" fill="none" stroke="#15803d" stroke-width="4"/>',
+        isom_small_clearing: '<rect x="2" y="2" width="44" height="44" rx="4" fill="#dcfce7"/><ellipse cx="24" cy="24" rx="14" ry="11" fill="#facc15"/>',
+        isom_thicket: '<ellipse cx="24" cy="24" rx="16" ry="13" fill="#166534"/>',
+        // Совместимость со старыми кодами IOF
+        iof_knoll: '<circle cx="24" cy="24" r="16" fill="none" stroke="#0f172a" stroke-width="4"/><circle cx="24" cy="24" r="4" fill="#0f172a"/>',
+        iof_boulder: '<polygon points="24,8 41,39 7,39" fill="#0f172a"/>'
+      };
+      const cpRing = code.startsWith('isom_') ? '<circle cx="24" cy="24" r="21" fill="none" stroke="#c026d3" stroke-opacity="0.45" stroke-width="2"/>' : '';
+      const inner = svgs[code] || '<circle cx="24" cy="24" r="14" fill="none" stroke="#c026d3" stroke-width="4"/>';
+      return `<div class="iof-badge" title="${code}"><svg viewBox="0 0 48 48" width="48" height="48">${inner}${cpRing}</svg></div>`;
+    }
+
+    // Резервный список курсов на случай открытия index.html локально через file://
+    const FALLBACK_COURSES = [
+      {
+        file: "courses/orienteering-kp-signs.json",
+        courseId: "orienteering_kp_signs_basic",
+        category: "orienteering",
+        version: 1,
+        title: "Знаки КП в спортивном ориентировании (IOF & Карта)",
+        description: "Базовый тренажёр по пиктограммам легенд КП (Колонки D и G) и знакам карты.",
+        lessons: [{
+          lessonId: "ori_kp_preview",
+          title: "Урок 1: Знаки у КП (откройте через HTTP-сервер для всех 17 знаков)",
+          summary: "Запустите локальный сервер в папке web-catalog/, чтобы подгружать полные JSON.",
+          theory: [{ title: "Бугор, Яма, Камень, Болото", body: "Откройте через HTTP (python -m http.server 8000) или GitHub Pages для загрузки полного курса из catalog.json." }],
+          concepts: [{
+            conceptId: "kp_sign_boulder",
+            term: "Отдельный камень",
+            symbolCode: "iof_boulder",
+            questions: [{
+              questionId: "q_kp_boulder_1",
+              type: "SINGLE_CHOICE",
+              symbolCode: "iof_boulder",
+              prompt: "Сплошной чёрный треугольник остриём вверх в легенде КП — что это за объект?",
+              options: [
+                { id: "a", text: "Отдельный камень", isCorrect: true },
+                { id: "b", text: "Яма", isCorrect: false },
+                { id: "c", text: "Бугор", isCorrect: false }
+              ],
+              explanation: "Камень в легенде IOF — закрашенный треугольник остриём вверх."
+            }]
+          }]
+        }]
+      },
+      {
+        file: "courses/languages-greek-verbs-a.json",
+        courseId: "languages_greek_verbs_a_top20",
+        category: "languages",
+        version: 1,
+        title: "Греческий язык: 20 самых популярных глаголов группы Α",
+        description: "Полный тренажёр по 20 базовым глаголам 1-го спряжения (Ομάδα Α, безударное -ω).",
+        lessons: [{
+          lessonId: "greek_preview",
+          title: "Урок 1: Первые глаголы группы Α",
+          summary: "κάνω, έχω, θέλω, ξέρω, βλέπω, ακούω, λέω, πηγαίνω, παίρνω, δίνω...",
+          theory: [{ title: "Спряжение группы Α", body: "Окончания: -ω, -εις, -ει, -ουμε, -ετε, -ουν(ε)." }],
+          concepts: [{
+            conceptId: "greek_a_01_kano",
+            term: "κάνω [кАно]",
+            questions: [{
+              questionId: "q_gr_1",
+              type: "SINGLE_CHOICE",
+              prompt: "Что означает греческий глагол «κάνω» (например, в «Τι κάνεις;»)?",
+              options: [
+                { id: "a", text: "делать", isCorrect: true },
+                { id: "b", text: "знать", isCorrect: false },
+                { id: "c", text: "брать", isCorrect: false }
+              ],
+              explanation: "κάνω — делать."
+            }]
+          }]
+        }]
+      }
+    ];
+
+    let loadedCourses = [];
+    let currentCategory = 'all';
+    let selectedCourse = null;
+    let selectedLessonIndex = 0;
+
+    function getCatalogAbsoluteUrl() {
+      try {
+        return new URL('catalog.json', window.location.href).href;
+      } catch {
+        return 'catalog.json';
+      }
+    }
+
+    function copyCatalogUrl() {
+      const url = getCatalogAbsoluteUrl();
+      navigator.clipboard?.writeText(url);
+      alert('Скопировано! Вставьте в Android -> «🌐 Общий ресурс»:\n' + url);
+    }
+
+    async function initPortal() {
+      document.getElementById('catalog-url-display').textContent = getCatalogAbsoluteUrl();
+      const badge = document.getElementById('load-source-badge');
+
+      try {
+        const res = await fetch('catalog.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const manifest = await res.json();
+        const courses = await Promise.all(
+          manifest.courses.map(async ref => {
+            const cRes = await fetch(ref.url);
+            const cData = await cRes.json();
+            cData._fileUrl = ref.url;
+            return cData;
+          })
+        );
+        loadedCourses = courses;
+        badge.textContent = `• Загружено из общего catalog.json (${courses.length} курсов)`;
+      } catch (e) {
+        loadedCourses = FALLBACK_COURSES;
+        badge.textContent = '• Офлайн-превью (для полной загрузки всех JSON запустите через HTTP-сервер)';
+      }
+      renderCourseList();
+    }
+
+    function filterCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderCourseList();
+    }
+
+    function renderCourseList() {
+      const list = document.getElementById('course-list');
+      list.innerHTML = '';
+      const filtered = loadedCourses.filter(c => currentCategory === 'all' || c.category === currentCategory);
+      const catNames = { orienteering: 'Ориентирование', reptiles: 'Рептилии', languages: 'Языки' };
+      const catIcons = {
+        orienteering: 'icons/service-orienteering.svg',
+        reptiles: 'icons/service-reptiles.svg',
+        languages: 'icons/service-languages.svg'
+      };
+
+      filtered.forEach(course => {
+        const div = document.createElement('div');
+        div.className = 'course-card' + (selectedCourse?.courseId === course.courseId ? ' selected' : '');
+        const totalConcepts = course.lessons.reduce((acc, l) => acc + l.concepts.length, 0);
+        const iconPath = catIcons[course.category] || 'icons/app-hub.svg';
+        div.innerHTML = `
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+            <img src="${iconPath}" alt="" width="22" height="22" style="border-radius:6px;" />
+            <span class="cat-pill cat-${course.category}" style="margin:0;">${catNames[course.category] || course.category}</span>
+          </div>
+          <h3 style="margin: 4px 0 8px; font-size: 16px;">${course.title}</h3>
+          <p style="margin: 0 0 8px; font-size: 13px; color: var(--muted);">${course.description}</p>
+          <span style="font-size: 11px; color: #64748b;">Уроков: ${course.lessons.length} • Понятий: ${totalConcepts} • v${course.version}</span>
+        `;
+        div.onclick = () => selectCourse(course, 0);
+        list.appendChild(div);
+      });
+      if (filtered.length > 0) selectCourse(filtered[0], 0);
+    }
+
+    function selectCourse(course, lessonIdx) {
+      selectedCourse = course;
+      selectedLessonIndex = lessonIdx;
+      const panel = document.getElementById('viewer-panel');
+      const lesson = course.lessons[lessonIdx] || course.lessons[0];
+
+      let lessonTabsHtml = '';
+      if (course.lessons.length > 1) {
+        lessonTabsHtml = '<div class="lesson-tabs">' + course.lessons.map((l, i) => `
+          <button class="tab-btn ${i === lessonIdx ? 'active' : ''}" onclick="selectCourse(selectedCourse, ${i})">
+            Урок ${i + 1}
+          </button>
+        `).join('') + '</div>';
+      }
+
+      let html = `
+        <div>
+          <span class="cat-pill cat-${course.category}">${course.category}</span>
+          <h2 style="margin: 4px 0;">${course.title}</h2>
+          <p style="color: var(--muted); margin-top: 4px; font-size: 13px;">
+            Источник для импорта: <code>${course._fileUrl || course.file || 'courses/...'}</code>
+          </p>
+        </div>
+        ${lessonTabsHtml}
+        <hr style="border:0; border-top:1px solid var(--border); margin: 16px 0;" />
+        <h3>📘 ${lesson.title}</h3>
+        <p style="color: var(--muted); font-size: 14px;">${lesson.summary || ''}</p>
+      `;
+
+      lesson.theory.forEach(t => {
+        html += `<div class="theory-box"><strong>${t.title}</strong>\n${t.body}</div>`;
+      });
+
+      html += `<h3>🎯 Вопросы урока (${lesson.concepts.length} понятий для SM-2)</h3>`;
+      lesson.concepts.forEach(concept => {
+        concept.questions.forEach(q => {
+          const sym = q.symbolCode || concept.symbolCode;
+          const typeBadges = {
+            TRUE_FALSE: '⚖️ Правда или Ложь',
+            SINGLE_CHOICE: '☝️ Один вариант',
+            MULTI_CHOICE: '☑️ Несколько вариантов',
+            WORD_ORDER: '🧩 Сборка фразы',
+            FLASHCARD: '🗂️ Карточка'
+          };
+          const audioUrl = q.audioUrl || concept.audioUrl || '';
+          const audioText = q.audioText || concept.audioText || '';
+          const speechLang = course.speechLang || 'el-GR';
+          const escapedAudioUrl = audioUrl.replace(/"/g, '&quot;');
+          const escapedAudioText = audioText.replace(/"/g, '&quot;');
+          const audioBtnHtml = audioText
+            ? `<button class="tab-btn" style="padding:4px 10px; font-size:12px; margin-left:auto;" data-audio-url="${escapedAudioUrl}" data-audio-text="${escapedAudioText}" data-speech-lang="${speechLang}" onclick="playAudioFromBtn(this)">🔊 Озвучить</button>`
+            : '';
+
+          html += `<div class="q-card" id="qbox-${q.questionId}">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span style="font-size:11px; color:var(--muted); font-weight:600;">${typeBadges[q.type] || q.type}</span>
+              ${audioBtnHtml}
+            </div>
+            <div class="q-header">
+              ${renderIofSvg(sym)}
+              <p style="margin:0; font-weight:600;">❓ ${q.prompt}</p>
+            </div>`;
+          if (q.type === 'TRUE_FALSE') {
+            const expected = q.correctBool !== undefined ? q.correctBool : true;
+            html += `<div style="display:flex; gap:10px; margin-top:10px;">
+              <button class="opt-btn" style="text-align:center; font-weight:600;" onclick="checkTf('${q.questionId}', true, ${expected}, this)">✅ Правда</button>
+              <button class="opt-btn" style="text-align:center; font-weight:600;" onclick="checkTf('${q.questionId}', false, ${expected}, this)">❌ Ложь</button>
+            </div>`;
+          } else if (q.type === 'MULTI_CHOICE' && q.options && q.options.length > 0) {
+            q.options.forEach(opt => {
+              html += `<label class="opt-btn" style="display:flex; align-items:center; gap:10px;">
+                <input type="checkbox" data-qid="${q.questionId}" data-correct="${!!opt.isCorrect}" />
+                <span>${opt.text}</span>
+              </label>`;
+            });
+            html += `<button class="action-btn" style="margin-top:10px;" onclick="checkMulti('${q.questionId}')">Проверить выбор</button>`;
+          } else if (q.options && q.options.length > 0) {
+            q.options.forEach(opt => {
+              html += `<button class="opt-btn" onclick="this.classList.add('${opt.isCorrect ? 'correct' : 'wrong'}')">${opt.text}</button>`;
+            });
+          } else if (q.wordTokens && q.wordTokens.length > 0) {
+            html += `<p style="color:#38bdf8; font-size:13px; margin-top:8px;">Сборка фразы: ${q.wordTokens.join(' / ')}</p>`;
+          } else if (q.answerText) {
+            html += `<p style="color:#10b981; font-size:14px; margin-top:8px;">Карточка: ${q.answerText}</p>`;
+          }
+          if (q.explanation) {
+            html += `<p id="exp-${q.questionId}" style="font-size:12px; color:var(--muted); margin-bottom:0; margin-top:10px;">💡 ${q.explanation}</p>`;
+          }
+          html += `</div>`;
+        });
+      });
+
+      panel.innerHTML = html;
+    }
+
+    function speakFallback(text, lang) {
+      if (!text || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = lang || 'el-GR';
+      utter.rate = 0.9;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function playAudioFromBtn(btn) {
+      const rawUrl = btn.dataset.audioUrl || '';
+      const audioText = btn.dataset.audioText || '';
+      const speechLang = btn.dataset.speechLang || 'el-GR';
+      const courseFileUrl = selectedCourse && selectedCourse._fileUrl
+        ? new URL(selectedCourse._fileUrl, window.location.href).href
+        : window.location.href;
+
+      if (rawUrl) {
+        try {
+          const resolved = new URL(rawUrl, courseFileUrl).href;
+          const player = new Audio(resolved);
+          player.play().catch(() => speakFallback(audioText, speechLang));
+          return;
+        } catch (e) {
+          speakFallback(audioText, speechLang);
+          return;
+        }
+      }
+      speakFallback(audioText, speechLang);
+    }
+
+    function checkTf(qid, chosen, expected, btn) {
+      const box = document.getElementById('qbox-' + qid);
+      box.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('correct', 'wrong'));
+      btn.classList.add(chosen === expected ? 'correct' : 'wrong');
+    }
+
+    function checkMulti(qid) {
+      const checks = document.querySelectorAll(`input[type="checkbox"][data-qid="${qid}"]`);
+      checks.forEach(cb => {
+        const label = cb.closest('label');
+        label.classList.remove('correct', 'wrong');
+        const isCorrect = cb.dataset.correct === 'true';
+        if (cb.checked && isCorrect) {
+          label.classList.add('correct');
+        } else if (cb.checked && !isCorrect) {
+          label.classList.add('wrong');
+        } else if (!cb.checked && isCorrect) {
+          label.style.borderColor = '#eab308';
+        }
+      });
+    }
+
+    function showBuilder(btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const panel = document.getElementById('viewer-panel');
+      const sampleJson = JSON.stringify(loadedCourses[0] || FALLBACK_COURSES[0], null, 2);
+      panel.innerHTML = `
+        <h2>➕ Генератор веб-страницы с тестом для Android</h2>
+        <p style="color: var(--muted);">
+          Отредактируйте JSON курса ниже и скачайте готовую HTML-страницу, либо добавьте JSON в <code>catalog.json</code> общего ресурса.
+        </p>
+        <textarea id="builder-json">${sampleJson}</textarea>
+        <div style="margin-top: 14px; display:flex; gap: 12px; flex-wrap: wrap;">
+          <button class="action-btn" onclick="downloadHtmlWithEmbeddedCourse()">⬇️ Скачать HTML-страницу с вшитым тестом</button>
+          <a href="standalone-sample-test.html" target="_blank" style="color:var(--primary); align-self:center; font-size:14px;">Открыть пример автономной веб-страницы →</a>
+        </div>
+      `;
+    }
+
+    function downloadHtmlWithEmbeddedCourse() {
+      const raw = document.getElementById('builder-json').value;
+      try {
+        const parsed = JSON.parse(raw);
+        const htmlContent = `<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="UTF-8"><title>${parsed.title}</title></head>
+<body style="font-family:sans-serif; max-width:760px; margin:24px auto; background:#0f172a; color:#f8fafc; padding:20px;">
+  <h1>${parsed.title}</h1>
+  <p>${parsed.description}</p>
+  <p style="color:#10b981;">Эта страница содержит встроенный пакет <code>alltests-course-data</code> для загрузки в Android-приложение AllTestsAreUs.</p>
+  <script id="alltests-course-data" type="application/json">
+${JSON.stringify(parsed, null, 2)}
+  <\/script>
+</body>
+</html>`;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `${parsed.courseId || 'custom-course'}.html`;
+        a.click();
+      } catch (e) {
+        alert('Ошибка в JSON: ' + e.message);
+      }
+    }
+
+    initPortal();
+  </script>
+</body>
+</html>

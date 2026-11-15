@@ -1,0 +1,48 @@
+FROM ubuntu:24.04
+
+# Отключаем интерактивные запросы при установке пакетов
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Базовые утилиты, Python 3 (для валидации JSON-курсов и упаковки web-catalog.zip) и Java 17 для Android SDK
+RUN apt-get update && apt-get install -y \
+    openjdk-17-jdk \
+    python3 \
+    curl \
+    wget \
+    unzip \
+    git \
+    aapt \
+    zipalign \
+    apksigner \
+    && rm -rf /var/lib/apt/lists/*
+
+# Настройка переменных окружения для Android SDK
+ENV ANDROID_HOME=/opt/android-sdk
+ENV PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
+
+# Скачиваем Android Command Line Tools
+RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O tools.zip && \
+    unzip -q tools.zip -d ${ANDROID_HOME}/cmdline-tools && \
+    mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
+    rm tools.zip
+
+# Соглашаемся с лицензиями и ставим базовые пакеты платформы
+RUN yes | sdkmanager --licenses
+# android-34: системный ARM aapt2 ниже не читает таблицу ресурсов android-35+
+RUN sdkmanager "platform-tools" "platforms;android-34" "build-tools;36.0.0"
+
+# Jenkins монтирует workspace от своего пользователя, а Gradle в контейнере работает от root
+RUN git config --system --add safe.directory '*'
+
+# Исправляем несовместимость архитектуры x86_64 -> нативные ARM-бинарники в контейнере
+RUN ln -sf /usr/bin/aapt ${ANDROID_HOME}/build-tools/36.0.0/aapt && \
+    ln -sf /usr/bin/aapt2 ${ANDROID_HOME}/build-tools/36.0.0/aapt2 && \
+    ln -sf /usr/bin/zipalign ${ANDROID_HOME}/build-tools/36.0.0/zipalign
+
+# Устанавливаем Gradle 8.11.1 (совпадает с gradle-wrapper.properties)
+RUN wget -q https://services.gradle.org/distributions/gradle-8.11.1-bin.zip -P /tmp \
+    && unzip -q -d /opt/gradle /tmp/gradle-8.11.1-bin.zip \
+    && ln -s /opt/gradle/gradle-8.11.1/bin/gradle /usr/bin/gradle \
+    && rm /tmp/gradle-8.11.1-bin.zip
+

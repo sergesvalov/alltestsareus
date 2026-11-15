@@ -1,0 +1,47 @@
+{
+  "catalogVersion": 6,
+  "catalogName": "AllTestsAreUs — Общий сайт курсов и тестов",
+  "updatedAt": "2026-11-15T17:36:00Z",
+  "courses": [
+    {
+      "courseId": "orienteering_kp_signs_basic",
+      "category": "orienteering",
+      "version": 3,
+      "title": "Условные знаки карты у КП (ISOM 2017-2)",
+      "description": "20 базовых условных знаков спортивных карт, у которых чаще всего устанавливаются контрольные пункты (КП): рельеф, камни, скалы, вода, растительность и постройки.",
+      "url": "courses/orienteering-kp-signs.json"
+    },
+    {
+      "courseId": "orienteering_isom_basics",
+      "category": "orienteering",
+      "version": 1,
+      "title": "Спортивное ориентирование: Теория карты и Навигация",
+      "description": "Цвета карты ISOM, проходимость леса, болота, лощины и техника взятия КП (Attack Point).",
+      "url": "courses/orienteering-isom.json"
+    },
+    {
+      "courseId": "languages_greek_verbs_a_top20",
+      "category": "languages",
+      "version": 4,
+      "title": "Греческий язык: 20 самых популярных глаголов группы Α",
+      "description": "Полный тренажёр по 20 базовым глаголам 1-го спряжения (Ομάδα Α, безударное -ω): значения, транскрипция, спряжение, фразы и озвучка на греческом.",
+      "url": "courses/languages-greek-verbs-a.json"
+    },
+    {
+      "courseId": "languages_english_phrasal_b2",
+      "category": "languages",
+      "version": 1,
+      "title": "Английский язык: Фразовые глаголы и конструкции (B1–B2)",
+      "description": "Живая лексика, фразовые глаголы и построение сложных предложений для долгосрочного запоминания.",
+      "url": "courses/languages-english.json"
+    },
+    {
+      "courseId": "reptiles_herpetology_101",
+      "category": "reptiles",
+      "version": 2,
+      "title": "Герпетология: Биология и виды рептилий",
+      "description": "Анатомия, терморегуляция, отличие ядовитых змей от неядовитых, гекконы и вараны.",
+      "url": "courses/reptiles-herpetology.json"
+    }
+  ]
+}

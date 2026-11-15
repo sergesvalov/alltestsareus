@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Легенды КП и Символы IOF — Веб-страница с тестом для Android</title>
+  <link rel="icon" type="image/svg+xml" href="icons/service-orienteering.svg" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #10b981;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 12px 16px;
+      margin-top: 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .option-btn:hover {
+      border-color: var(--accent);
+    }
+    .option-btn.correct {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+    }
+    .option-btn.wrong {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: #ef4444;
+    }
+    code {
+      background: rgba(0,0,0,0.35);
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="icons/service-orienteering.svg" alt="" width="28" height="28" style="border-radius:7px;" />
+      <span class="badge">AllTestsAreUs • Web-to-Android Compatible Page</span>
+    </div>
+    <h1 id="course-title">Загрузка курса...</h1>
+    <p id="course-desc" style="color: var(--muted);"></p>
+
+    <div class="card">
+      <strong>📲 Как загрузить этот тест в Android-приложение:</strong>
+      <p style="margin-bottom: 0; color: var(--muted);">
+        Скопируйте адрес (URL) этой веб-страницы и вставьте его в окно <em>«Импорт с веб-страницы»</em> в приложении.
+        Приложение автоматически извлечёт встроенный блок <code>&lt;script id="alltests-course-data"&gt;</code> и добавит вопросы в систему интервального повторения SM-2!
+      </p>
+    </div>
+
+    <div id="content-area"></div>
+  </div>
+
+  <!--
+    ВСТРОЕННЫЙ ПАКЕТ КУРСА ДЛЯ ANDROID-ПАРСЕРА И БРАУЗЕРА.
+    Android-приложение ищет тег <script id="alltests-course-data" type="application/json">
+    и импортирует уроки и вопросы прямо из HTML-страницы!
+  -->
+  <script id="alltests-course-data" type="application/json">
+  {
+    "courseId": "orienteering_iof_control_descriptions",
+    "category": "orienteering",
+    "version": 1,
+    "title": "Легенды КП (Пиктограммы IOF)",
+    "description": "Специальный веб-курс: чтение колонок A–H в легендах контрольных пунктов (восточный угол ямы, между камнями, подножие бугра).",
+    "author": "Web Orienteering Portal",
+    "sourceWebUrl": "https://example.com/web-catalog/standalone-sample-test.html",
+    "lessons": [
+      {
+        "lessonId": "iof_columns_lesson",
+        "title": "Урок: Структура колонок легенды КП (A–H)",
+        "summary": "За что отвечает каждая из 8 клеток в строке легенды КП.",
+        "theory": [
+          {
+            "title": "8 колонок легенды IOF",
+            "body": "Каждая строка легенды описывает один КП:\n- **Колонка A** — порядковый номер КП (1, 2, 3...).\n- **Колонка B** — код КП (например, 31, 45) — обязательно сверяйте его при отметке чипом!\n- **Колонка C** — какой именно из нескольких однотипных объектов (например: *северо-западный*, *верхний*, *средний*).\n- **Колонка D** — сам объект (бугор, яма, камень, промоина, корч).\n- **Колонка G** — точное положение призмы относительно объекта (северо-восточная сторона, внутри, на вершине, у подножия)."
+          }
+        ],
+        "concepts": [
+          {
+            "conceptId": "iof_col_b_code",
+            "term": "Колонка B в легенде КП (Код пункта)",
+            "definition": "Двузначный или трёхзначный номер на самой станции КП для проверки правильности взятия.",
+            "questions": [
+              {
+                "questionId": "q_iof_web_1",
+                "type": "SINGLE_CHOICE",
+                "prompt": "Что обозначает число во второй колонке (Колонка B) легенды КП, например: [ 4 | 132 | ... ]?",
+                "options": [
+                  { "id": "a", "text": "Контрольный код станции КП (132), который нужно сверить на местности", "isCorrect": true },
+                  { "id": "b", "text": "Расстояние от предыдущего КП в метрах", "isCorrect": false },
+                  { "id": "c", "text": "Азимут движения в градусах", "isCorrect": false },
+                  { "id": "d", "text": "Высоту бугра над уровнем моря", "isCorrect": false }
+                ],
+                "explanation": "Первая колонка (A) — порядковый номер КП на дистанции (4-й КП), вторая (B) — код самой станции (132)."
+              }
+            ]
+          },
+          {
+            "conceptId": "iof_col_g_position",
+            "term": "Колонка G (Положение знака КП относительно ориентира)",
+            "definition": "Показывает, с какого края, угла или внутри/снаружи объекта установлена призма.",
+            "questions": [
+              {
+                "questionId": "q_iof_web_2",
+                "type": "FLASHCARD",
+                "prompt": "Кружок с точкой в центре в колонке D легенды КП — что это за объект рельефа?",
+                "answerText": "Небольшой бугор (микробугор) / Холмик.",
+                "explanation": "В пиктограммах IOF замкнутый овал/кружок обозначает бугор, а треугольник остриём вниз — яму."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    // Отрисовка встроенного JSON прямо на веб-странице для чтения и прохождения в браузере
+    const rawJson = document.getElementById('alltests-course-data').textContent;
+    const course = JSON.parse(rawJson);
+    document.getElementById('course-title').textContent = course.title;
+    document.getElementById('course-desc').textContent = course.description;
+
+    const area = document.getElementById('content-area');
+    course.lessons.forEach(lesson => {
+      const lDiv = document.createElement('div');
+      lDiv.className = 'card';
+      lDiv.innerHTML = `<h2>${lesson.title}</h2><p style="color:#94a3b8">${lesson.summary}</p>`;
+      lesson.theory.forEach(t => {
+        lDiv.innerHTML += `<h3>📘 ${t.title}</h3><p style="white-space: pre-line">${t.body}</p>`;
+      });
+      lesson.concepts.forEach(concept => {
+        concept.questions.forEach(q => {
+          const qBox = document.createElement('div');
+          qBox.style.marginTop = '16px';
+          qBox.style.paddingTop = '16px';
+          qBox.style.borderTop = '1px solid rgba(255,255,255,0.1)';
+          qBox.innerHTML = `<strong>❓ ${q.prompt}</strong>`;
+          if (q.options) {
+            q.options.forEach(opt => {
+              const btn = document.createElement('button');
+              btn.className = 'option-btn';
+              btn.textContent = opt.text;
+              btn.onclick = () => {
+                btn.classList.add(opt.isCorrect ? 'correct' : 'wrong');
+              };
+              qBox.appendChild(btn);
+            });
+          } else if (q.answerText) {
+            qBox.innerHTML += `<p style="color:#10b981; margin-top:8px;">Ответ карточки: ${q.answerText}</p>`;
+          }
+          lDiv.appendChild(qBox);
+        });
+      });
+      area.appendChild(lDiv);
+    });
+  </script>
+</body>
+</html>
+

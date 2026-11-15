@@ -1,0 +1,10 @@
+gradlew text eol=lf
+Jenkinsfile text eol=lf
+Dockerfile.android text eol=lf
+Dockerfile.web text eol=lf
+docker/nginx.web.conf text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.keystore binary

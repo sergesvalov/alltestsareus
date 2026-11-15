@@ -1,0 +1,88 @@
+{
+  "courseId": "languages_english_phrasal_b2",
+  "category": "languages",
+  "version": 1,
+  "title": "Английский язык: Фразовые глаголы и конструкции (B1–B2)",
+  "description": "Живая лексика, фразовые глаголы и построение сложных предложений для долгосрочного запоминания.",
+  "author": "Lingua Memory Lab",
+  "sourceWebUrl": "https://example.com/web-catalog/index.html",
+  "lessons": [
+    {
+      "lessonId": "lang_lesson_phrasal_1",
+      "title": "Урок 1: Неочевидные фразовые глаголы (Put, Come, Run)",
+      "summary": "Разбираем фразовые глаголы, значение которых нельзя угадать по отдельным словам.",
+      "theory": [
+        {
+          "title": "Три важнейших глагола для повседневной речи",
+          "body": "Фразовые глаголы из трех компонентов (глагол + наречие + предлог) неделимы:\n1. **put up with (something/someone)** — мириться с чем-то, терпеть (*I can't put up with this noise*).\n2. **come up with (an idea/plan)** — придумать, предложить идею или решение (*She came up with a brilliant architecture*).\n3. **run out of (time/money/patience)** — исчерпать запас чего-либо (*We are running out of battery*)."
+        },
+        {
+          "title": "Порядок слов в косвенных вопросах (Indirect Questions)",
+          "body": "Когда вопрос начинается с вежливой рамки (*Could you tell me...*, *Do you know...*), во второй части используется **прямой порядок слов** (без инверсии и без вспомогательного *do/does/did*):\n- ❌ *Do you know where does he live?*\n- ✅ *Do you know **where he lives**?*"
+        }
+      ],
+      "concepts": [
+        {
+          "conceptId": "lang_put_up_with",
+          "term": "put up with (smth)",
+          "definition": "Мириться с чем-то, терпеть (синоним: tolerate).",
+          "questions": [
+            {
+              "questionId": "q_lang_1",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Выберите правильный фразовый глагол: 'I don't know how you ___ such loud neighbors!' (терпишь / миришься с)",
+              "options": [
+                { "id": "opt1", "text": "put up with", "isCorrect": true },
+                { "id": "opt2", "text": "put off by", "isCorrect": false },
+                { "id": "opt3", "text": "come across to", "isCorrect": false },
+                { "id": "opt4", "text": "run over with", "isCorrect": false }
+              ],
+              "explanation": "'Put up with' = tolerate (терпеть, мириться без жалоб). А 'put off' означает откладывать на потом."
+            },
+            {
+              "questionId": "q_lang_2",
+              "type": "FLASHCARD",
+              "prompt": "Как по-английски сказать «придумать / предложить (идею или решение)» через фразовый глагол с COME?",
+              "answerText": "come up with (an idea / a solution)",
+              "explanation": "Пример: We need to come up with a better plan before Monday."
+            }
+          ]
+        },
+        {
+          "conceptId": "lang_indirect_question_order",
+          "term": "Прямой порядок слов в косвенном вопросе",
+          "definition": "После 'Could you tell me where...' подлежащее идёт перед сказуемым.",
+          "questions": [
+            {
+              "questionId": "q_lang_3",
+              "type": "WORD_ORDER",
+              "prompt": "Соберите грамматически верный косвенный вопрос:",
+              "wordTokens": ["Could", "you", "tell", "me", "where", "the", "station", "is"],
+              "explanation": "В косвенном вопросе глагол 'is' ставится в самый конец: '...where the station is', а не '...where is the station'."
+            }
+          ]
+        },
+        {
+          "conceptId": "lang_run_out_of",
+          "term": "run out of (something)",
+          "definition": "Израсходовать, остаться без чего-либо (времени, топлива, молока).",
+          "questions": [
+            {
+              "questionId": "q_lang_4",
+              "type": "SINGLE_CHOICE",
+              "prompt": "Какое предложение переводится как «У нас закончилось время»?",
+              "options": [
+                { "id": "opt1", "text": "We have run out of time.", "isCorrect": true },
+                { "id": "opt2", "text": "We have run away from time.", "isCorrect": false },
+                { "id": "opt3", "text": "We have put down our time.", "isCorrect": false },
+                { "id": "opt4", "text": "We have looked into time.", "isCorrect": false }
+              ],
+              "explanation": "'Run out of' используется, когда ресурс подошёл к концу."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

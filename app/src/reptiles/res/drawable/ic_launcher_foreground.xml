@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Внешнее кольцо глаза рептилии / чешуи -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M24,54Q54,26 84,54Q54,82 24,54Z" />
+    <!-- Золотая радужка -->
+    <path
+        android:fillColor="#EAB308"
+        android:pathData="M54,39A15,15 0 1,1 53.99,39Z" />
+    <!-- Вертикальный зрачок рептилии -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M54,41Q59,54 54,67Q49,54 54,41Z" />
+    <!-- Блик -->
+    <path
+        android:fillColor="#F8FAFC"
+        android:pathData="M48,47A2.5,2.5 0 1,1 47.99,47Z" />
+    <!-- Гребешок сверху -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M40,34L44,27L48,33L54,25L60,33L64,27L68,34Z" />
+</vector>
+

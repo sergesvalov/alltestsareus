@@ -1,0 +1,31 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Кольцо дистанции / КП (пурпурное в ориентировании, адаптировано изумрудным ободком) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#34D399"
+        android:strokeWidth="4"
+        android:pathData="M54,23A31,31 0 1,1 53.99,23Z" />
+    <!-- Призма КП (верхний левый треугольник белый, нижний правый оранжевый) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,36H74V72H34Z" />
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M74,36L74,72L34,72Z" />
+    <!-- Тёмная рамка призмы КП -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#0F172A"
+        android:strokeWidth="2.5"
+        android:strokeLineJoin="round"
+        android:pathData="M34,36H74V72H34Z" />
+    <!-- Маленькая стрелка компаса поверх -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M54,20L59,29L49,29Z" />
+</vector>
+

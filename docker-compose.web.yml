@@ -1,0 +1,10 @@
+services:
+  alltestsareus-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: alltestsareus-web
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+

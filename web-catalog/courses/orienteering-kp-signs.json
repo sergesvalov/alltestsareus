@@ -1,0 +1,502 @@
+{
+  "courseId": "orienteering_kp_signs_basic",
+  "category": "orienteering",
+  "version": 3,
+  "title": "Условные знаки карты у КП (ISOM 2017-2)",
+  "description": "20 базовых условных знаков спортивных карт, у которых чаще всего устанавливаются контрольные пункты (КП): рельеф, камни, скалы, вода, растительность и постройки.",
+  "author": "AllTests Orienteering Club",
+  "sourceWebUrl": "http://192.168.0.225:8085/index.html",
+  "lessons": [
+    {
+      "lessonId": "ori_isom_kp_lesson_1_relief_rocks",
+      "title": "Урок 1: Условные знаки рельефа, камней и скал у КП",
+      "summary": "Коричневые знаки рельефа (бугор, яма, воронка, промоина, обрыв, особый знак X) и чёрные знаки скал и камней.",
+      "theory": [
+        {
+          "title": "Как устроен условный знак КП на карте?",
+          "body": "Центр малинового кружка КП на спортивной карте всегда совпадает с конкретным объектом — **условным знаком ISOM**.\n\nПо цвету знака сразу понятно, что искать:\n- **Коричневый** — формы рельефа (бугры, ямы, промоины, обрывы).\n- **Чёрный** — камни, скалы, тропы и искусственные объекты.\n- **Синий** — вода и болота.\n- **Зелёный / Жёлтый** — особенности растительности и поляны."
+        },
+        {
+          "title": "Отличие похожих знаков (Чёрное vs Коричневое)",
+          "body": "- **Коричневая галочка `V`** — сухая земляная яма / микрояма (ISOM 112), а **чёрная галочка `V`** — скальная яма или пещера (ISOM 203).\n- **Коричневый `X`** — особый объект рельефа (ISOM 115, например крупный муравейник/яма от корня), **чёрный `X`** — искусственный объект (кормушка, вышка), **зелёный `X`** — объект растительности (корч, поваленное дерево)."
+        }
+      ],
+      "concepts": [
+        {
+          "conceptId": "isom_kp_109_knoll",
+          "term": "Малый бугор (ISOM 109)",
+          "definition": "Коричневый замкнутый контур (овал или точка). Небольшое возвышение земли, на вершине или боку которого ставят КП.",
+          "symbolCode": "isom_knoll",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_1",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_knoll",
+              "prompt": "В центре кружка КП на карте изображён небольшой коричневый замкнутый овал. Что это за знак?",
+              "options": [
+                { "id": "a", "text": "Малый бугор (возвышение рельефа)", "isCorrect": true },
+                { "id": "b", "text": "Сухая воронка / яма", "isCorrect": false },
+                { "id": "c", "text": "Отдельный камень", "isCorrect": false },
+                { "id": "d", "text": "Небольшая поляна", "isCorrect": false }
+              ],
+              "explanation": "Коричневый замкнутый контур без бергштрихов внутрь обозначает бугор (ISOM 109)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_112_pit",
+          "term": "Сухая яма / Микрояма (ISOM 112)",
+          "definition": "Коричневая галочка (V) с крутыми краями. КП обычно ставится прямо на дне ямы или на её краю.",
+          "symbolCode": "isom_pit",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_2",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_pit",
+              "prompt": "Что обозначает коричневая галочка (буква V) в кружке КП на карте?",
+              "options": [
+                { "id": "a", "text": "Сухая яма / микрояма (искусственная или карстовая воронка)", "isCorrect": true },
+                { "id": "b", "text": "Пещера в скале", "isCorrect": false },
+                { "id": "c", "text": "Группа камней", "isCorrect": false },
+                { "id": "d", "text": "Бугорок / муравейник", "isCorrect": false }
+              ],
+              "explanation": "Коричневая галочка (V) — сухая земляная яма (ISOM 112). Скальная яма рисуется точно так же, но ЧЁРНЫМ цветом."
+            },
+            {
+              "questionId": "q_isom_kp_2_tf",
+              "type": "TRUE_FALSE",
+              "symbolCode": "isom_pit",
+              "prompt": "Правда или Ложь: коричневая галочка (V) на карте ориентирования означает НЕБОЛЬШОЙ БУГОР.",
+              "correctBool": false,
+              "explanation": "Ложь! Коричневая галочка (V) остриём вниз обозначает сухую яму / микрояму (углубление), а бугор рисуется замкнутым коричневым овалом."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_111_depression",
+          "term": "Воронка / Котловина (ISOM 111)",
+          "definition": "Замкнутая коричневая горизонталь с короткими чёрточками (бергштрихами), направленными ВНУТРЬ.",
+          "symbolCode": "isom_depression",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_3",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_depression",
+              "prompt": "Коричневый овал с чёрточками (бергштрихами), направленными внутрь круга — у какого объекта стоит КП?",
+              "options": [
+                { "id": "a", "text": "Замкнутое понижение / Котловина (воронка)", "isCorrect": true },
+                { "id": "b", "text": "Высокий бугор", "isCorrect": false },
+                { "id": "c", "text": "Непроходимое болото", "isCorrect": false },
+                { "id": "d", "text": "Развалины дома", "isCorrect": false }
+              ],
+              "explanation": "Бергштрихи всегда показывают направление вниз по склону. Если они смотрят внутрь — это котловина (яма)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_107_gully",
+          "term": "Промоина / Овраг (ISOM 107)",
+          "definition": "Коричневый вытянутый клин или линия с треугольниками вдоль неё — узкая канава, промытая водой.",
+          "symbolCode": "isom_erosion_gully",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_4",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_erosion_gully",
+              "prompt": "Что означает этот коричневый клиновидный знак, в вершине или на изгибе которого стоит КП?",
+              "options": [
+                { "id": "a", "text": "Промоина / Сухой овраг", "isCorrect": true },
+                { "id": "b", "text": "Перекрёсток лесных троп", "isCorrect": false },
+                { "id": "c", "text": "Каменная ограда", "isCorrect": false },
+                { "id": "d", "text": "Ручей с водой", "isCorrect": false }
+              ],
+              "explanation": "Коричневый клин (ISOM 107) — сухая промоина. Очень частый ориентир для постановки КП."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_104_earth_bank",
+          "term": "Земляной обрыв (ISOM 104)",
+          "definition": "Коричневая линия с короткими зубцами вниз по склону (глиняный или песчаный обрыв, край карьера).",
+          "symbolCode": "isom_earth_bank",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_5",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_earth_bank",
+              "prompt": "Коричневая линия с зубцами вниз в кружке КП — это:",
+              "options": [
+                { "id": "a", "text": "Земляной обрыв (крутой склон / стенка карьера)", "isCorrect": true },
+                { "id": "b", "text": "Каменная скала", "isCorrect": false },
+                { "id": "c", "text": "Мост через ручей", "isCorrect": false },
+                { "id": "d", "text": "Деревянный забор", "isCorrect": false }
+              ],
+              "explanation": "Коричневые зубцы обозначают обрыв из грунта/песка (ISOM 104). Каменная скала рисуется таким же знаком, но чёрным."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_115_relief_x",
+          "term": "Особый объект рельефа (Коричневый X, ISOM 115)",
+          "definition": "Коричневый крестик X — особый точечный объект рельефа (например, крупный муравейник или необычный бугорок).",
+          "symbolCode": "isom_special_relief_x",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_6",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_special_relief_x",
+              "prompt": "Что означает КОРИЧНЕВЫЙ крестик (X), у которого стоит КП?",
+              "options": [
+                { "id": "a", "text": "Особый объект рельефа (уточняется в легенде, напр. крупный муравейник)", "isCorrect": true },
+                { "id": "b", "text": "Кормушка или вышка (искусственный объект)", "isCorrect": false },
+                { "id": "c", "text": "Корч / Поваленное дерево", "isCorrect": false },
+                { "id": "d", "text": "Запрещённый для бега район", "isCorrect": false }
+              ],
+              "explanation": "Коричневый X (ISOM 115) относится к группе рельефа/грунта, в отличие от чёрного X (постройки) и зелёного X (растительность)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_204_boulder",
+          "term": "Отдельный камень (ISOM 204)",
+          "definition": "Крупная сплошная чёрная точка (диаметр зависит от высоты камня). Один из самых точных ориентиров КП.",
+          "symbolCode": "isom_boulder",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_7",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_boulder",
+              "prompt": "Чёрная сплошная круглая точка в центре КП на карте — что это?",
+              "options": [
+                { "id": "a", "text": "Отдельный камень (валун)", "isCorrect": true },
+                { "id": "b", "text": "Колодец с водой", "isCorrect": false },
+                { "id": "c", "text": "Бугор", "isCorrect": false },
+                { "id": "d", "text": "Небольшая группа камней", "isCorrect": false }
+              ],
+              "explanation": "Чёрная точка — отдельный камень (ISOM 204/205). Чем крупнее камень, тем больше точка."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_207_boulder_cluster",
+          "term": "Группа камней (ISOM 207)",
+          "definition": "Сплошной чёрный треугольник остриём вверх — скопление нескольких камней рядом.",
+          "symbolCode": "isom_boulder_cluster",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_8",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_boulder_cluster",
+              "prompt": "Что на карте обозначает сплошной ЧЁРНЫЙ треугольник остриём вверх?",
+              "options": [
+                { "id": "a", "text": "Группа камней", "isCorrect": true },
+                { "id": "b", "text": "Отдельно стоящая ель", "isCorrect": false },
+                { "id": "c", "text": "Вершина горы / тригопункт", "isCorrect": false },
+                { "id": "d", "text": "Вход в пещеру", "isCorrect": false }
+              ],
+              "explanation": "Сплошной чёрный треугольник (ISOM 207) — группа камней (нагромождение валунов)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_201_cliff",
+          "term": "Скала / Каменный обрыв (ISOM 201)",
+          "definition": "Толстая чёрная линия с перпендикулярными зубцами, направленными в сторону спуска.",
+          "symbolCode": "isom_cliff",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_9",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_cliff",
+              "prompt": "Чёрная линия с зубцами вниз, у которой стоит КП — это:",
+              "options": [
+                { "id": "a", "text": "Скала / Каменный обрыв (зубцы показывают низ обрыва)", "isCorrect": true },
+                { "id": "b", "text": "Каменный забор", "isCorrect": false },
+                { "id": "c", "text": "Мост через овраг", "isCorrect": false },
+                { "id": "d", "text": "Земляная насыпь", "isCorrect": false }
+              ],
+              "explanation": "Чёрная линия с зубцами — скала (ISOM 201). КП часто устанавливают у её подножия или на краю."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_203_rocky_pit",
+          "term": "Пещера / Скальная яма (ISOM 203)",
+          "definition": "Чёрная галочка V (отверстие в породе, расщелина или вход в пещеру).",
+          "symbolCode": "isom_rocky_pit",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_10",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_rocky_pit",
+              "prompt": "В центре КП нарисована ЧЁРНАЯ галочка (V). Что это означает на карте?",
+              "options": [
+                { "id": "a", "text": "Скальная яма / Расщелина / Вход в пещеру", "isCorrect": true },
+                { "id": "b", "text": "Обычная земляная яма в лесу", "isCorrect": false },
+                { "id": "c", "text": "Охотничья вышка", "isCorrect": false },
+                { "id": "d", "text": "Корч", "isCorrect": false }
+              ],
+              "explanation": "Чёрная V (ISOM 203) — яма в каменистом грунте, расщелина или пещера."
+            },
+            {
+              "questionId": "q_isom_kp_10_mc",
+              "type": "MULTI_CHOICE",
+              "prompt": "Выберите ВСЕ условные знаки карты, которые рисуются КОРИЧНЕВЫМ цветом (группа рельефа):",
+              "options": [
+                { "id": "a", "text": "Малый бугор (ISOM 109)", "isCorrect": true },
+                { "id": "b", "text": "Сухая земляная яма (ISOM 112)", "isCorrect": true },
+                { "id": "c", "text": "Земляной обрыв (ISOM 104)", "isCorrect": true },
+                { "id": "d", "text": "Группа камней (ISOM 207)", "isCorrect": false },
+                { "id": "e", "text": "Корч / Поваленное дерево (ISOM 419)", "isCorrect": false }
+              ],
+              "explanation": "Весь рельеф (бугры, ямы, промоины, земляные обрывы) рисуется коричневым. Камни — чёрным, а корч (растительность) — зелёным."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "lessonId": "ori_isom_kp_lesson_2_water_veg_manmade",
+      "title": "Урок 2: Знаки воды, растительности, троп и построек у КП",
+      "summary": "Синие знаки воды и болот, зелёные и жёлтые знаки леса, перекрёстки троп, развалины и особые объекты.",
+      "theory": [
+        {
+          "title": "Гидрография, растительность и постройки у КП",
+          "body": "- **Синие знаки:** болото (горизонтальные штрихи), непроходимое болото (в чёрном контуре), воронка с водой (залитый голубой овал), родник (дуга с линией ручья).\n- **Зелёные и жёлтые:** небольшая жёлтая поляна среди леса, тёмно-зелёный кустарник, зелёный `X` (корч / выворотень / упавшее дерево), зелёный `O` (отдельно стоящее заметное дерево).\n- **Чёрные линейные и точечные:** перекрёсток троп (пунктиры), каменная стена (линия с точками), развалины (разорванный прямоугольник), чёрный `X` (кормушка, вышка, стенд) и чёрный `O` (колодец, опора)."
+        }
+      ],
+      "concepts": [
+        {
+          "conceptId": "isom_kp_308_marsh_passable",
+          "term": "Проходимое болото (ISOM 308)",
+          "definition": "Синие горизонтальные штрихи без чёрной окантовки. Может быть пересечено бегом, КП часто ставят на краю или на носу болота.",
+          "symbolCode": "isom_marsh_passable",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_11",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_marsh_passable",
+              "prompt": "Синие горизонтальные штрихи БЕЗ чёрного контура вокруг. Что это за знак?",
+              "options": [
+                { "id": "a", "text": "Проходимое (преодолимое) болото", "isCorrect": true },
+                { "id": "b", "text": "Непроходимое болото (пересечение опасно)", "isCorrect": false },
+                { "id": "c", "text": "Глубокое озеро", "isCorrect": false },
+                { "id": "d", "text": "Сеть оросительных канав", "isCorrect": false }
+              ],
+              "explanation": "Отсутствие чёрного контура означает, что болото преодолимо (ISOM 308)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_307_marsh_impassable",
+          "term": "Непроходимое болото (ISOM 307)",
+          "definition": "Синие штрихи, обведённые тонким чёрным контуром — глубокое болото, КП ставят строго по краю.",
+          "symbolCode": "isom_marsh_impassable",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_12",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_marsh_impassable",
+              "prompt": "В районе КП нарисованы синие штрихи, обведённые ЧЁРНЫМ контуром. О чём это предупреждает?",
+              "options": [
+                { "id": "a", "text": "Непроходимое болото — пересекать нельзя, искать КП на краю", "isCorrect": true },
+                { "id": "b", "text": "Сухой луг с высокой травой", "isCorrect": false },
+                { "id": "c", "text": "Родник с питьевой водой", "isCorrect": false },
+                { "id": "d", "text": "Бетонный бассейн", "isCorrect": false }
+              ],
+              "explanation": "Чёрный контур вокруг синей штриховки (ISOM 307) — признак непроходимого болота."
+            },
+            {
+              "questionId": "q_isom_kp_12_tf",
+              "type": "TRUE_FALSE",
+              "symbolCode": "isom_marsh_impassable",
+              "prompt": "Правда или Ложь: на карте ISOM синие горизонтальные полосы в тонком чёрном контуре обозначают НЕПРОХОДИМОЕ болото.",
+              "correctBool": true,
+              "explanation": "Правда! Именно чёрная обводка по краю отличает непроходимое болото (ISOM 307) от обычного проходимого (ISOM 308)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_302_waterhole",
+          "term": "Воронка с водой / Малый водоём (ISOM 302)",
+          "definition": "Небольшой голубой контур, залитый водой, с тонкой чёрной каймой берега.",
+          "symbolCode": "isom_waterhole",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_13",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_waterhole",
+              "prompt": "Небольшой голубой овал в тонком чёрном контуре под кружком КП — это:",
+              "options": [
+                { "id": "a", "text": "Воронка с водой / Небольшой пруд (водоём)", "isCorrect": true },
+                { "id": "b", "text": "Поляна", "isCorrect": false },
+                { "id": "c", "text": "Скала", "isCorrect": false },
+                { "id": "d", "text": "Отдельный камень", "isCorrect": false }
+              ],
+              "explanation": "Голубая заливка в тонком контуре — открытая вода (ISOM 302/301)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_309_spring",
+          "term": "Родник / Исток (ISOM 309)",
+          "definition": "Синяя полудуга (чаша), из которой начинается линия ручья.",
+          "symbolCode": "isom_spring",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_14",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_spring",
+              "prompt": "Синяя дуга с выходящей из неё синей линией обозначает:",
+              "options": [
+                { "id": "a", "text": "Родник (исток ручья)", "isCorrect": true },
+                { "id": "b", "text": "Брод через реку", "isCorrect": false },
+                { "id": "c", "text": "Овраг", "isCorrect": false },
+                { "id": "d", "text": "Забор", "isCorrect": false }
+              ],
+              "explanation": "Знак ISOM 309 обозначает родник или начало ручья — очень заметный точечный объект в лесу."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_419_veg_x",
+          "term": "Корч / Особый объект растительности (Зелёный X, ISOM 419)",
+          "definition": "Зелёный крестик X на карте — корч (выворотень), заметный пень или упавшее дерево.",
+          "symbolCode": "isom_root_stock_veg",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_15",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_root_stock_veg",
+              "prompt": "В центре КП нарисован ЗЕЛЁНЫЙ крестик (X). Что вы ищете на местности?",
+              "options": [
+                { "id": "a", "text": "Особый объект растительности (обычно корч / выворотень)", "isCorrect": true },
+                { "id": "b", "text": "Металлическую вышку или скамейку", "isCorrect": false },
+                { "id": "c", "text": "Сухую яму", "isCorrect": false },
+                { "id": "d", "text": "Родник", "isCorrect": false }
+              ],
+              "explanation": "Зелёный X (ISOM 419) всегда связан с растительностью — чаще всего в лесу это корч (корни упавшего дерева)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_418_distinct_tree",
+          "term": "Отдельно стоящее дерево (Зелёный O, ISOM 418)",
+          "definition": "Незакрашенный зелёный кружок — одинокое или резко выделяющееся дерево (например, дуб на поляне).",
+          "symbolCode": "isom_distinct_tree",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_16",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_distinct_tree",
+              "prompt": "Незакрашенный ЗЕЛЁНЫЙ кружок (O) в центре КП означает:",
+              "options": [
+                { "id": "a", "text": "Отдельное заметное дерево (или куст)", "isCorrect": true },
+                { "id": "b", "text": "Колодец", "isCorrect": false },
+                { "id": "c", "text": "Малый бугор", "isCorrect": false },
+                { "id": "d", "text": "Поляна", "isCorrect": false }
+              ],
+              "explanation": "Зелёный кружок O (ISOM 418) обозначает приметное дерево."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_401_clearing",
+          "term": "Небольшая поляна (Жёлтый участок, ISOM 401/402)",
+          "definition": "Жёлтый овал среди белого/зелёного леса — открытое пространство без деревьев, КП часто ставят на углу поляны.",
+          "symbolCode": "isom_small_clearing",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_17",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_small_clearing",
+              "prompt": "Жёлтое пятно среди леса (белого или зелёного фона), на краю которого стоит КП — это:",
+              "options": [
+                { "id": "a", "text": "Поляна / Открытое пространство (луг)", "isCorrect": true },
+                { "id": "b", "text": "Песчаный обрыв", "isCorrect": false },
+                { "id": "c", "text": "Сухая яма", "isCorrect": false },
+                { "id": "d", "text": "Заросли крапивы", "isCorrect": false }
+              ],
+              "explanation": "Жёлтый цвет на картах ориентирования всегда обозначает открытое место без леса (поляну, вырубку, луг)."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_506_path_junction",
+          "term": "Перекрёсток троп (ISOM 506)",
+          "definition": "Пересечение двух чёрных пунктирных линий — перекрёсток лесных тропинок.",
+          "symbolCode": "isom_path_junction",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_18",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_path_junction",
+              "prompt": "В центре КП пересекаются две чёрные пунктирные линии. Что это за ориентир?",
+              "options": [
+                { "id": "a", "text": "Перекрёсток малых троп", "isCorrect": true },
+                { "id": "b", "text": "Линия электропередач", "isCorrect": false },
+                { "id": "c", "text": "Овраг и ручей", "isCorrect": false },
+                { "id": "d", "text": "Забор", "isCorrect": false }
+              ],
+              "explanation": "Одинарный чёрный пунктир — малая тропа (ISOM 506), а пересечение двух пунктиров — перекрёсток троп."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_523_ruin",
+          "term": "Развалины / Фундамент (ISOM 523)",
+          "definition": "Чёрный разорванный контур прямоугольника — разрушенные стены здания или фундамент.",
+          "symbolCode": "isom_ruin",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_19",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_ruin",
+              "prompt": "Разорванный прямоугольник из толстых чёрных линий (углы стен) обозначает:",
+              "options": [
+                { "id": "a", "text": "Развалины строения / Фундамент", "isCorrect": true },
+                { "id": "b", "text": "Действующий жилой дом", "isCorrect": false },
+                { "id": "c", "text": "Каменную яму", "isCorrect": false },
+                { "id": "d", "text": "Болото", "isCorrect": false }
+              ],
+              "explanation": "Разорванный контур (ISOM 523) — развалины. Целое здание закрашивается сплошным тёмно-серым или чёрным цветом."
+            }
+          ]
+        },
+        {
+          "conceptId": "isom_kp_530_manmade_x",
+          "term": "Особый искусственный объект (Чёрный X, ISOM 530)",
+          "definition": "Чёрный крестик X обозначает рукотворный точечный объект: кормушку, охотничью вышку, стенд, лавочку или памятник.",
+          "symbolCode": "isom_special_manmade_x",
+          "questions": [
+            {
+              "questionId": "q_isom_kp_20",
+              "type": "SINGLE_CHOICE",
+              "symbolCode": "isom_special_manmade_x",
+              "prompt": "Чёрный крестик (X) в кружке КП на карте (в отличие от зелёного или коричневого) означает:",
+              "options": [
+                { "id": "a", "text": "Особый искусственный объект (кормушка, вышка, щит, скамейка и т.п.)", "isCorrect": true },
+                { "id": "b", "text": "Корч упавшего дерева", "isCorrect": false },
+                { "id": "c", "text": "Контрольный пункт снят", "isCorrect": false },
+                { "id": "d", "text": "Отдельный камень", "isCorrect": false }
+              ],
+              "explanation": "Чёрный X (ISOM 530) — искусственный объект. Его точное назначение при необходимости уточняется в легенде или заметках к карте."
+            },
+            {
+              "questionId": "q_isom_kp_20_mc",
+              "type": "MULTI_CHOICE",
+              "prompt": "Выберите ВСЕ верные соответствия цвета знака «крестик (X)» на карте ISOM:",
+              "options": [
+                { "id": "a", "text": "Зелёный X — корч / выворотень / особый объект растительности", "isCorrect": true },
+                { "id": "b", "text": "Чёрный X — особый искусственный объект (вышка, кормушка, стенд)", "isCorrect": true },
+                { "id": "c", "text": "Коричневый X — особый объект рельефа (напр. крупный муравейник)", "isCorrect": true },
+                { "id": "d", "text": "Жёлтый X — непроходимое болото", "isCorrect": false }
+              ],
+              "explanation": "В стандарте ISOM крестик X используется для особых точечных объектов: зелёный (растительность), чёрный (постройки), коричневый (рельеф). Жёлтого крестика в природе стандарта нет."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
