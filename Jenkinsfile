@@ -100,8 +100,9 @@ pipeline {
             steps {
                 script {
                     echo "Сборка Docker-образа веб-сервиса тестов (${env.WEB_IMAGE}:${env.VERSION})..."
+                    sh "mkdir -p out"
                     withBuilder {
-                        sh "mkdir -p out && cd web-catalog && python3 -m zipfile -c ../out/AllTestsAreUs-${env.VERSION}-web-catalog.zip . && chmod a+rw ../out/AllTestsAreUs-${env.VERSION}-web-catalog.zip"
+                        sh "cd web-catalog && python3 -m zipfile -c ../out/AllTestsAreUs-${env.VERSION}-web-catalog.zip . && cd .. && chmod -R a+rwX out"
                     }
                     sh """
                         docker build -t ${env.WEB_IMAGE}:latest -t ${env.WEB_IMAGE}:${env.VERSION} -f Dockerfile.web .
@@ -151,6 +152,7 @@ pipeline {
                                 sh """
                                     gradle ${gradleTasks} ${GRADLE_ARGS} -PversionCode=${env.VERSION_CODE} -PwebCatalogUrl=${env.WEB_CATALOG_URL} || { chmod -R a+rwX app/build || true; exit 1; }
                                     chmod -R a+rwX app/build
+                                    [ ! -d out ] || chmod -R a+rwX out
                                 """
                             }
                         }
@@ -236,8 +238,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'out/*', allowEmptyArchive: true, fingerprint: true
-            removeRootOwnedPaths(dir: '.', paths: ['app/build', '.gradle'])
-            sh 'rm -rf out'
+            removeRootOwnedPaths(dir: '.', paths: ['app/build', '.gradle', 'out'])
         }
         success {
             echo "Сборка и деплой AllTestsAreUs завершены успешно!"
