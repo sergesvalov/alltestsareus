@@ -44,6 +44,12 @@ fun AllTestsAppRoot(vm: MainViewModel = viewModel()) {
     val state by vm.uiState.collectAsState()
     var showWebImportDialog by remember { mutableStateOf(false) }
 
+    LaunchedEffect(state.allCourses.isEmpty()) {
+        if (state.allCourses.isEmpty() && state.sharedCatalogResult == null && !state.isImporting) {
+            vm.browseSharedCatalog(state.sharedResourceUrl)
+        }
+    }
+
     when {
         state.activeQuizQueue.isNotEmpty() -> {
             QuizPlayerScreen(
@@ -79,7 +85,10 @@ fun AllTestsAppRoot(vm: MainViewModel = viewModel()) {
                 onSelectCategory = { vm.selectCategoryFilter(it) },
                 onOpenCourse = { vm.openCourse(it) },
                 onStartDailyReview = { vm.startDailySmartReview() },
-                onOpenWebImport = { showWebImportDialog = true }
+                onOpenWebImport = { showWebImportDialog = true },
+                onBrowseCatalog = { vm.browseSharedCatalog(state.sharedResourceUrl) },
+                onInstallCatalogCourse = { ref -> vm.installCourseFromSharedCatalog(ref) },
+                onSyncAllCatalog = { vm.syncAllFromSharedResource(state.sharedResourceUrl) }
             )
         }
     }

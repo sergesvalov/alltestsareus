@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alltestsareus.app.BuildConfig
 import com.alltestsareus.app.R
+import com.alltestsareus.app.model.CatalogCourseRefDto
 import com.alltestsareus.app.model.CourseDto
 import com.alltestsareus.app.ui.UiState
 
@@ -45,7 +46,10 @@ fun CatalogScreen(
     onSelectCategory: (String) -> Unit,
     onOpenCourse: (CourseDto) -> Unit,
     onStartDailyReview: () -> Unit,
-    onOpenWebImport: () -> Unit
+    onOpenWebImport: () -> Unit,
+    onBrowseCatalog: () -> Unit,
+    onInstallCatalogCourse: (CatalogCourseRefDto) -> Unit,
+    onSyncAllCatalog: () -> Unit
 ) {
     val dueItems = remember(state.filteredCourses, state.progressByConcept) {
         state.getDueReviewItems()
@@ -100,7 +104,24 @@ fun CatalogScreen(
         }
 
         if (state.allCourses.isEmpty()) {
-            item { EmptyCatalogCard(onOpenWebImport = onOpenWebImport) }
+            item {
+                EmptyCatalogCard(
+                    state = state,
+                    onBrowseCatalog = onBrowseCatalog,
+                    onSyncAllCatalog = onSyncAllCatalog,
+                    onOpenWebImport = onOpenWebImport
+                )
+            }
+            val catalogItems = state.sharedCatalogResult?.items.orEmpty()
+            if (catalogItems.isNotEmpty()) {
+                items(catalogItems, key = { it.ref.courseId }) { item ->
+                    RemoteCoursePickItem(
+                        ref = item.ref,
+                        isBusy = state.isImporting,
+                        onDownload = { onInstallCatalogCourse(item.ref) }
+                    )
+                }
+            }
         } else {
             if (BuildConfig.FLAVOR_CATEGORY == "all") {
                 item {
@@ -159,7 +180,12 @@ fun CatalogScreen(
 }
 
 @Composable
-private fun EmptyCatalogCard(onOpenWebImport: () -> Unit) {
+private fun EmptyCatalogCard(
+    state: UiState,
+    onBrowseCatalog: () -> Unit,
+    onSyncAllCatalog: () -> Unit,
+    onOpenWebImport: () -> Unit
+) {
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(16.dp),
@@ -179,29 +205,117 @@ private fun EmptyCatalogCard(onOpenWebImport: () -> Unit) {
                     modifier = Modifier.size(28.dp)
                 )
                 Text(
-                    text = "На телефоне пока нет тестов",
+                    text = "Тестов пока нет — какой загрузить?",
                     fontSize = 19.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
             }
             Text(
-                text = "Выберите и скачайте нужные курсы с общего сайта (условные знаки карты у КП, 20 глаголов греческого группы Α, рептилии и др.). После скачивания тесты работают полностью офлайн.",
+                text = "Приложение установлено без встроенных тестов. Выберите нужный курс с сервера (${state.sharedResourceUrl}) — после скачивания он работает полностью офлайн.",
                 color = Color(0xFFCBD5E1),
-                fontSize = 14.sp,
-                lineHeight = 20.sp
+                fontSize = 13.sp,
+                lineHeight = 19.sp
             )
-            Button(
-                onClick = onOpenWebImport,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_service_web_catalog),
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp)
+            if (state.isImporting) {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            }
+            if (!state.importStatusMessage.isNullOrBlank()) {
+                Text(
+                    text = state.importStatusMessage,
+                    color = Color(0xFF38BDF8),
+                    fontSize = 12.sp
                 )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text("Выбрать и скачать тесты с сайта")
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                if (state.sharedCatalogResult != null && state.sharedCatalogResult.items.isNotEmpty()) {
+                    Button(
+                        onClick = onSyncAllCatalog,
+                        enabled = !state.isImporting,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text("Скачать все", fontSize = 13.sp)
+                    }
+                } else {
+                    Button(
+                        onClick = onBrowseCatalog,
+                        enabled = !state.isImporting,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text("Запросить с сервера", fontSize = 13.sp)
+                    }
+                }
+                OutlinedButton(
+                    onClick = onOpenWebImport,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text("Другой URL / HTML", fontSize = 13.sp)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun RemoteCoursePickItem(
+    ref: CatalogCourseRefDto,
+    isBusy: Boolean,
+    onDownload: () -> Unit
+) {
+    val badgeColor = when (ref.category) {
+        "orienteering" -> Color(0xFF10B981)
+        "reptiles" -> Color(0xFFEAB308)
+        "languages" -> Color(0xFFA855F7)
+        else -> Color(0xFF38BDF8)
+    }
+    Card(
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        shape = RoundedCornerShape(14.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier.padding(14.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Surface(
+                color = badgeColor.copy(alpha = 0.16f),
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier.size(40.dp)
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Image(
+                        painter = painterResource(id = serviceIconRes(ref.category)),
+                        contentDescription = ref.category,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = ref.title,
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                if (ref.description.isNotBlank()) {
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = ref.description,
+                        color = Color(0xFF94A3B8),
+                        fontSize = 12.sp,
+                        maxLines = 2
+                    )
+                }
+            }
+            Button(
+                onClick = onDownload,
+                enabled = !isBusy
+            ) {
+                Text("Скачать", fontSize = 12.sp)
             }
         }
     }
