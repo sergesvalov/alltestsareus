@@ -1,14 +1,14 @@
 {
-  "catalogVersion": 8,
+  "catalogVersion": 9,
   "catalogName": "Quiz Deck — Общий сайт курсов и тестов",
-  "updatedAt": "2026-11-16T07:01:00Z",
+  "updatedAt": "2026-11-16T07:32:00Z",
   "courses": [
     {
       "courseId": "orienteering_control_descriptions",
       "category": "orienteering",
-      "version": 1,
+      "version": 2,
       "title": "Легенда КП: как читать описание контрольных пунктов (IOF)",
-      "description": "20 ключевых символов и правил официальной легенды КП, которую выдают участникам ориентирования: объект КП (колонка D), точное место призмы (колонка G) и уточнения (C, E, F, H).",
+      "description": "22 ключевых символа и правила реальной легенды КП (включая разбор дистанции «Prodromos Reservoir»): шапка, старт ▷, объекты колонки D, точное место призмы (колонка G) и финишная маркировка.",
       "url": "courses/orienteering-control-descriptions.json"
     },
     {

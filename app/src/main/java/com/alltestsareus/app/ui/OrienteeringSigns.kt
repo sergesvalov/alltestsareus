@@ -138,9 +138,35 @@ fun OrienteeringSignBadge(
                     "isom_thicket" -> drawOval(IsomColors.DarkGreen, Offset(w * 0.14f, h * 0.20f), Size(w * 0.72f, h * 0.60f))
 
                     // Пиктограммы легенд КП (IOF Control Descriptions) — Колонка D (Объект КП)
+                    "iof_start" -> {
+                        val p = Path().apply {
+                            moveTo(w * 0.26f, h * 0.20f)
+                            lineTo(w * 0.80f, h * 0.50f)
+                            lineTo(w * 0.26f, h * 0.80f)
+                            close()
+                        }
+                        drawPath(p, color = IsomColors.Black, style = stroke)
+                    }
+                    "iof_finish_run" -> {
+                        drawCircle(IsomColors.Black, w * 0.14f, Offset(w * 0.24f, h * 0.50f), style = Stroke(sw * 0.8f))
+                        drawLine(IsomColors.Black, Offset(w * 0.42f, h * 0.50f), Offset(w * 0.58f, h * 0.50f), sw * 0.7f, StrokeCap.Round)
+                        drawCircle(IsomColors.Black, w * 0.16f, Offset(w * 0.76f, h * 0.50f), style = Stroke(sw * 0.75f))
+                        drawCircle(IsomColors.Black, w * 0.09f, Offset(w * 0.76f, h * 0.50f), style = Stroke(sw * 0.65f))
+                    }
                     "iof_knoll" -> {
-                        drawOval(IsomColors.Black, Offset(w * 0.22f, h * 0.28f), Size(w * 0.56f, h * 0.44f), style = stroke)
-                        drawCircle(IsomColors.Black, w * 0.06f, Offset(w * 0.50f, h * 0.50f))
+                        drawCircle(IsomColors.Black, w * 0.26f, Offset(w * 0.50f, h * 0.50f), style = stroke)
+                    }
+                    "iof_small_knoll" -> {
+                        drawCircle(IsomColors.Black, w * 0.16f, Offset(w * 0.50f, h * 0.50f))
+                    }
+                    "iof_stone_wall" -> {
+                        drawLine(IsomColors.Black, Offset(w * 0.18f, h * 0.82f), Offset(w * 0.82f, h * 0.18f), sw, StrokeCap.Round)
+                        listOf(0.32f to 0.68f, 0.50f to 0.50f, 0.68f to 0.32f).forEach { (x, y) ->
+                            drawCircle(IsomColors.Black, w * 0.075f, Offset(w * x, h * y))
+                        }
+                    }
+                    "iof_building" -> {
+                        drawRect(IsomColors.Black, Offset(w * 0.24f, h * 0.24f), Size(w * 0.52f, h * 0.52f))
                     }
                     "iof_spur" -> {
                         drawArc(IsomColors.Black, 180f, 180f, false, Offset(w * 0.22f, h * 0.24f), Size(w * 0.56f, h * 0.52f), style = stroke)
@@ -193,9 +219,24 @@ fun OrienteeringSignBadge(
 
                     // Колонка G — Положение призмы КП относительно объекта
                     "iof_pos_n" -> drawSideDot(0.50f, 0.22f, sw)
+                    "iof_pos_nw" -> drawSideDot(0.26f, 0.26f, sw)
                     "iof_pos_ne" -> drawSideDot(0.76f, 0.24f, sw)
                     "iof_pos_s" -> drawSideDot(0.50f, 0.78f, sw)
                     "iof_pos_w" -> drawSideDot(0.22f, 0.50f, sw)
+                    "iof_pos_between_lines" -> {
+                        drawLine(IsomColors.Black, Offset(w * 0.20f, h * 0.32f), Offset(w * 0.80f, h * 0.32f), sw, StrokeCap.Round)
+                        drawLine(IsomColors.Black, Offset(w * 0.20f, h * 0.68f), Offset(w * 0.80f, h * 0.68f), sw, StrokeCap.Round)
+                        drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.50f, h * 0.50f))
+                    }
+                    "iof_pos_outside_corner" -> {
+                        val p = Path().apply {
+                            moveTo(w * 0.22f, h * 0.24f)
+                            lineTo(w * 0.50f, h * 0.58f)
+                            lineTo(w * 0.78f, h * 0.24f)
+                        }
+                        drawPath(p, color = IsomColors.Black, style = stroke)
+                        drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.50f, h * 0.77f))
+                    }
                     "iof_pos_top" -> {
                         drawArc(IsomColors.Black, 180f, 180f, false, Offset(w * 0.20f, h * 0.42f), Size(w * 0.60f, h * 0.42f), style = stroke)
                         drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.50f, h * 0.25f))
