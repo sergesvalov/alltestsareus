@@ -13,7 +13,8 @@ data class CourseEntity(
     val author: String,
     val sourceWebUrl: String,
     val rawLessonsJson: String, // Полный JSON уроков и вопросов для быстрого чтения
-    val updatedAtEpochMs: Long
+    val updatedAtEpochMs: Long,
+    val speechLang: String? = null // Язык озвучки курса (например el-GR)
 )
 
 @Entity(tableName = "user_concept_progress")

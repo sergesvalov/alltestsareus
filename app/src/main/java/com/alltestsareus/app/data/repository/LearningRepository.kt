@@ -203,7 +203,8 @@ class LearningRepository(
             author = author,
             sourceWebUrl = sourceWebUrl,
             rawLessonsJson = json.encodeToString(lessons),
-            updatedAtEpochMs = System.currentTimeMillis()
+            updatedAtEpochMs = System.currentTimeMillis(),
+            speechLang = speechLang
         )
     }
 
@@ -220,6 +221,7 @@ class LearningRepository(
             description = description,
             author = author,
             sourceWebUrl = sourceWebUrl,
+            speechLang = speechLang,
             lessons = parsedLessons
         )
     }

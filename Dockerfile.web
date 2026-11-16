@@ -1,4 +1,6 @@
-FROM alpine:3.20 AS audio-builder
+# Этап генерации аудио выполняется на нативной платформе сборщика (Raspberry Pi arm64),
+# поэтому не требует QEMU, даже когда итоговый образ собирается под linux/amd64.
+FROM --platform=$BUILDPLATFORM alpine:3.20 AS audio-builder
 
 RUN apk add --no-cache python3 espeak-ng lame
 
@@ -8,6 +10,8 @@ COPY tools/generate_greek_audio.py ./tools/generate_greek_audio.py
 
 RUN python3 tools/generate_greek_audio.py
 
+# Итоговый образ — под платформу целевого сервера (--platform linux/amd64 в Jenkins).
+# Здесь только COPY, без RUN, поэтому кросс-сборка не требует эмуляции.
 FROM nginx:1.27-alpine
 
 COPY docker/nginx.web.conf /etc/nginx/conf.d/default.conf

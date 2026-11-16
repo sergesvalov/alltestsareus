@@ -20,10 +20,11 @@ pipeline {
         )
         choice(
             name: 'BUILD_FLAVOR',
-            choices: ['ALL', 'allInOne', 'orienteering', 'reptiles', 'languages'],
-            description: 'Какой вариант Android APK/AAB собирать (ALL — все 4 сборки)'
+            choices: ['allInOne', 'ALL', 'orienteering', 'reptiles', 'languages'],
+            description: 'Какой APK собирать. По умолчанию один универсальный allInOne (тесты скачиваются с сервера). ALL — все 4 варианта'
         )
-        booleanParam(name: 'BUILD_ANDROID', defaultValue: true, description: 'Собрать Android APK и AAB в Docker')
+        booleanParam(name: 'BUILD_ANDROID', defaultValue: true, description: 'Собрать Android APK в Docker')
+        booleanParam(name: 'BUILD_AAB', defaultValue: false, description: 'Дополнительно собрать AAB (нужен только для Google Play)')
         booleanParam(name: 'BUILD_WEB_DOCKER', defaultValue: true, description: 'Собрать и запушить Docker-образ сервиса тестов (Dockerfile.web)')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Запускать проверку JSON-курсов и unit-тесты в Docker')
     }
@@ -39,6 +40,8 @@ pipeline {
         WEB_SERVER_IP   = "192.168.0.225"
         WEB_SERVER_PORT = "8085"
         WEB_CATALOG_URL = "http://192.168.0.225:8085/catalog.json"
+        // Сервер 192.168.0.225 — x86_64, а агент сборки — Raspberry Pi (arm64)
+        WEB_PLATFORM    = "linux/amd64"
 
         // Сервер публикации APK
         PROD_SERVER_IP = "192.168.0.230"
@@ -57,6 +60,9 @@ pipeline {
                     env.VERSION_CODE = sh(returnStdout: true, script: 'echo $(( ($(git log -1 --format=%ct) - 1704067200) / 60 ))').trim()
                     env.VERSION = "1.0.${env.VERSION_CODE}"
                     echo "Версия сборки: ${env.VERSION} (versionCode=${env.VERSION_CODE})"
+                    // Убираем артефакты прошлых сборок (могли остаться root-owned из Docker)
+                    removeRootOwnedPaths(dir: '.', paths: ['out'])
+                    sh 'mkdir -p out'
                 }
             }
         }
@@ -100,12 +106,10 @@ pipeline {
             steps {
                 script {
                     echo "Сборка Docker-образа веб-сервиса тестов (${env.WEB_IMAGE}:${env.VERSION})..."
-                    sh "mkdir -p out"
-                    withBuilder {
-                        sh "cd web-catalog && python3 -m zipfile -c ../out/AllTestsAreUs-${env.VERSION}-web-catalog.zip . && cd .. && chmod -R a+rwX out"
-                    }
                     sh """
-                        docker build -t ${env.WEB_IMAGE}:latest -t ${env.WEB_IMAGE}:${env.VERSION} -f Dockerfile.web .
+                        DOCKER_BUILDKIT=1 docker build --platform ${env.WEB_PLATFORM} \\
+                          -t ${env.WEB_IMAGE}:latest -t ${env.WEB_IMAGE}:${env.VERSION} -f Dockerfile.web .
+                        docker image inspect -f 'Образ веб-сервиса: {{.Os}}/{{.Architecture}}' ${env.WEB_IMAGE}:latest
                         docker push ${env.WEB_IMAGE}:latest
                         docker push ${env.WEB_IMAGE}:${env.VERSION}
                     """
@@ -115,18 +119,37 @@ pipeline {
                         sshagent(credentials: [env.DEPLOY_USER]) {
                             sh """
                                 ssh -o StrictHostKeyChecking=accept-new ${env.DEPLOY_USER}@${env.WEB_SERVER_IP} '
-                                    docker pull ${env.WEB_IMAGE}:latest &&
-                                    docker rm -f alltestsareus-web 2>/dev/null || true &&
-                                    docker run -d --name alltestsareus-web --restart unless-stopped -p ${env.WEB_SERVER_PORT}:80 ${env.WEB_IMAGE}:latest
+                                    set -e
+                                    docker pull --platform ${env.WEB_PLATFORM} ${env.WEB_IMAGE}:${env.VERSION}
+                                    docker rm -f alltestsareus-web >/dev/null 2>&1 || true
+                                    docker run -d --name alltestsareus-web --restart unless-stopped \\
+                                      --platform ${env.WEB_PLATFORM} \\
+                                      -p ${env.WEB_SERVER_PORT}:80 ${env.WEB_IMAGE}:${env.VERSION}
                                 '
                             """
                         }
+
+                        echo "Проверка доступности ${env.WEB_CATALOG_URL} и аудио..."
+                        sh """
+                            ok=0
+                            for i in \$(seq 1 15); do
+                                if curl -fsS -o /dev/null "${env.WEB_CATALOG_URL}"; then ok=1; break; fi
+                                sleep 2
+                            done
+                            if [ "\$ok" != "1" ]; then
+                                echo "Сервис тестов не отвечает на ${env.WEB_CATALOG_URL}"
+                                exit 1
+                            fi
+                            curl -fsS "${env.WEB_CATALOG_URL}" | head -c 300; echo
+                            curl -fsS -o /dev/null -w "MP3 озвучка: HTTP %{http_code}, %{size_download} байт\\n" \\
+                              "http://${env.WEB_SERVER_IP}:${env.WEB_SERVER_PORT}/audio/greek/01_kano.mp3"
+                        """
                     }
                 }
             }
         }
 
-        stage('Compile Android APK & AAB (Docker)') {
+        stage('Compile Android APK (Docker)') {
             when {
                 expression { params.BUILD_ANDROID }
             }
@@ -139,7 +162,7 @@ pipeline {
 
                         def gradleTasks = flavors.collect { f ->
                             def cap = f[0].toUpperCase() + f.substring(1)
-                            "assemble${cap}Release bundle${cap}Release"
+                            params.BUILD_AAB ? "assemble${cap}Release bundle${cap}Release" : "assemble${cap}Release"
                         }.join(' ')
 
                         echo "Сборка Android в Docker (${flavors.join(', ')}): ${gradleTasks}"
@@ -152,24 +175,25 @@ pipeline {
                                 sh """
                                     gradle ${gradleTasks} ${GRADLE_ARGS} -PversionCode=${env.VERSION_CODE} -PwebCatalogUrl=${env.WEB_CATALOG_URL} || { chmod -R a+rwX app/build || true; exit 1; }
                                     chmod -R a+rwX app/build
-                                    [ ! -d out ] || chmod -R a+rwX out
                                 """
                             }
                         }
 
                         flavors.each { f ->
                             def apkPattern = "app/build/outputs/apk/${f}/release/*.apk"
-                            def aabPattern = "app/build/outputs/bundle/${f}Release/*.aab"
                             def foundApks = findFiles(glob: apkPattern)
                             if (foundApks.length == 0) {
                                 error("Android APK не найден для flavor '${f}' (${apkPattern})")
                             }
                             def apkFile = foundApks[0].path
-                            collect(apkFile, "AllTestsAreUs-${f}-${env.VERSION}.apk")
+                            def baseName = (f == 'allInOne') ? "AllTestsAreUs-${env.VERSION}" : "AllTestsAreUs-${f}-${env.VERSION}"
+                            collect(apkFile, "${baseName}.apk")
 
-                            def foundAabs = findFiles(glob: aabPattern)
-                            if (foundAabs.length > 0) {
-                                collect(foundAabs[0].path, "AllTestsAreUs-${f}-${env.VERSION}.aab")
+                            if (params.BUILD_AAB) {
+                                def foundAabs = findFiles(glob: "app/build/outputs/bundle/${f}Release/*.aab")
+                                if (foundAabs.length > 0) {
+                                    collect(foundAabs[0].path, "${baseName}.aab")
+                                }
                             }
 
                             if (f == 'allInOne' && params.DEPLOY_METHOD == 'DIRECT_SSH') {
