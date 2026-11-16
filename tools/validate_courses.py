@@ -130,10 +130,6 @@ def main() -> int:
                 print(f"ERROR: Greek verbs course must have >= 20 concepts, found {concept_count}", file=sys.stderr)
                 return 1
 
-        if cid == "orienteering_kp_signs_basic" and concept_count < 20:
-            print(f"ERROR: Orienteering KP signs course must have >= 20 concepts, found {concept_count}", file=sys.stderr)
-            return 1
-
         print(f"OK: {cid} (v{course['version']}, concepts={concept_count})")
 
     print(f"SUCCESS: Validated {len(seen_courses)} courses, {len(seen_concepts)} concepts, {len(seen_questions)} questions.")

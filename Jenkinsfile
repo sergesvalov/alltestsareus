@@ -235,7 +235,7 @@ pipeline {
                                       -H "X-Publish-Token: \${APK_TOKEN}" \\
                                       -F "file=@${apkPath}" \\
                                       -F "app_id=${env.APK_REPO_APP}" \\
-                                      -F "title=AllTestsAreUs" \\
+                                      -F "title=Quiz Deck" \\
                                       -F "package_name=com.alltestsareus.app" \\
                                       -F "version_code=${env.VERSION_CODE}" \\
                                       -F "version_name=${env.VERSION}" \\

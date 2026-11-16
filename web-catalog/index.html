@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AllTestsAreUs — Общий ресурс тестов, знаки КП и Греческие глаголы</title>
+  <title>Quiz Deck — Общий ресурс тестов, знаки КП и Греческие глаголы</title>
   <link rel="icon" type="image/svg+xml" href="icons/app-hub.svg" />
   <style>
     :root {
@@ -199,8 +199,8 @@
     <div class="brand" style="display:flex; align-items:center; gap:12px;">
       <img src="icons/app-hub.svg" alt="AllTestsAreUs" width="40" height="40" style="border-radius:10px; flex-shrink:0;" />
       <div>
-        <h1>AllTestsAreUs Web Hub</h1>
-        <p>Общий ресурс тестов, знаков КП ориентирования и греческих глаголов для Android (SM-2)</p>
+        <h1>Quiz Deck Web Hub</h1>
+        <p>Общий ресурс тестов, знаков КП ориентирования и греческих глаголов для Android</p>
       </div>
     </div>
     <div class="tabs">
@@ -265,9 +265,33 @@
         isom_distinct_tree: '<circle cx="24" cy="24" r="11" fill="none" stroke="#15803d" stroke-width="4"/>',
         isom_small_clearing: '<rect x="2" y="2" width="44" height="44" rx="4" fill="#dcfce7"/><ellipse cx="24" cy="24" rx="14" ry="11" fill="#facc15"/>',
         isom_thicket: '<ellipse cx="24" cy="24" rx="16" ry="13" fill="#166534"/>',
-        // Совместимость со старыми кодами IOF
-        iof_knoll: '<circle cx="24" cy="24" r="16" fill="none" stroke="#0f172a" stroke-width="4"/><circle cx="24" cy="24" r="4" fill="#0f172a"/>',
-        iof_boulder: '<polygon points="24,8 41,39 7,39" fill="#0f172a"/>'
+        // Пиктограммы легенд КП (IOF Control Descriptions)
+        iof_knoll: '<ellipse cx="24" cy="24" rx="13" ry="10" fill="none" stroke="#111827" stroke-width="3.5"/><circle cx="24" cy="24" r="2.8" fill="#111827"/>',
+        iof_spur: '<path d="M10,32 A14,16 0 0,1 38,32" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round"/>',
+        iof_reentrant: '<polyline points="10,35 24,13 38,35" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
+        iof_pit: '<polyline points="11,14 24,36 37,14" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>',
+        iof_depression: '<ellipse cx="24" cy="24" rx="16" ry="11" fill="none" stroke="#111827" stroke-width="3.5"/><line x1="24" y1="13" x2="24" y2="20" stroke="#111827" stroke-width="3"/><line x1="24" y1="35" x2="24" y2="28" stroke="#111827" stroke-width="3"/>',
+        iof_cliff: '<line x1="6" y1="18" x2="42" y2="18" stroke="#111827" stroke-width="4.5"/><line x1="12" y1="18" x2="12" y2="32" stroke="#111827" stroke-width="3.5"/><line x1="24" y1="18" x2="24" y2="32" stroke="#111827" stroke-width="3.5"/><line x1="36" y1="18" x2="36" y2="32" stroke="#111827" stroke-width="3.5"/>',
+        iof_boulder: '<polygon points="24,8 41,39 7,39" fill="#111827"/>',
+        iof_boulder_cluster: '<polygon points="24,7 31,19 17,19" fill="#111827"/><polygon points="14,25 21,37 7,37" fill="#111827"/><polygon points="34,25 41,37 27,37" fill="#111827"/>',
+        iof_marsh: '<line x1="8" y1="14" x2="40" y2="14" stroke="#111827" stroke-width="4" stroke-linecap="round"/><line x1="8" y1="24" x2="40" y2="24" stroke="#111827" stroke-width="4" stroke-linecap="round"/><line x1="8" y1="34" x2="40" y2="34" stroke="#111827" stroke-width="4" stroke-linecap="round"/>',
+        iof_spring: '<path d="M19,15 A7,9 0 1,0 19,33" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round"/><line x1="20" y1="24" x2="40" y2="24" stroke="#111827" stroke-width="3.5" stroke-linecap="round"/>',
+        iof_clearing: '<rect x="10" y="12" width="28" height="24" fill="none" stroke="#111827" stroke-width="3.5"/>',
+        iof_distinct_tree: '<circle cx="24" cy="20" r="9" fill="none" stroke="#111827" stroke-width="3.8"/><line x1="24" y1="29" x2="24" y2="40" stroke="#111827" stroke-width="3.8" stroke-linecap="round"/>',
+        iof_root_stock: '<line x1="11" y1="11" x2="37" y2="37" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/><line x1="37" y1="11" x2="11" y2="37" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>',
+        iof_ruin: '<polyline points="23,11 10,11 10,37 38,37 38,22" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round"/>',
+        iof_path_junction: '<line x1="7" y1="8" x2="41" y2="40" stroke="#111827" stroke-width="3.5" stroke-dasharray="6,4"/><line x1="41" y1="8" x2="7" y2="40" stroke="#111827" stroke-width="3.5" stroke-dasharray="6,4"/>',
+        iof_pos_n: '<circle cx="24" cy="24" r="9.5" fill="none" stroke="#111827" stroke-width="3.5"/><circle cx="24" cy="10" r="5" fill="#dc2626"/>',
+        iof_pos_ne: '<circle cx="24" cy="24" r="9.5" fill="none" stroke="#111827" stroke-width="3.5"/><circle cx="36" cy="12" r="5" fill="#dc2626"/>',
+        iof_pos_s: '<circle cx="24" cy="24" r="9.5" fill="none" stroke="#111827" stroke-width="3.5"/><circle cx="24" cy="38" r="5" fill="#dc2626"/>',
+        iof_pos_w: '<circle cx="24" cy="24" r="9.5" fill="none" stroke="#111827" stroke-width="3.5"/><circle cx="10" cy="24" r="5" fill="#dc2626"/>',
+        iof_pos_top: '<path d="M10,34 A14,16 0 0,1 38,34" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="12" r="5" fill="#dc2626"/>',
+        iof_pos_foot: '<polyline points="11,13 28,36 40,36" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="33" cy="29" r="5" fill="#dc2626"/>',
+        iof_pos_inside: '<polyline points="11,14 24,36 37,14" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="22" r="5" fill="#dc2626"/>',
+        iof_pos_between: '<polygon points="12,17 19,31 5,31" fill="#111827"/><polygon points="36,17 43,31 29,31" fill="#111827"/><circle cx="24" cy="25" r="5" fill="#dc2626"/>',
+        iof_col_c_north: '<circle cx="24" cy="14" r="5" fill="#dc2626"/><circle cx="24" cy="33" r="5" fill="none" stroke="#111827" stroke-width="3.2"/>',
+        iof_col_h_first_aid: '<line x1="24" y1="10" x2="24" y2="38" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/><line x1="10" y1="24" x2="38" y2="24" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>',
+        iof_col_h_refreshment: '<polygon points="12,12 36,12 31,37 17,37" fill="none" stroke="#111827" stroke-width="3.5" stroke-linejoin="round"/>'
       };
       const cpRing = code.startsWith('isom_') ? '<circle cx="24" cy="24" r="21" fill="none" stroke="#c026d3" stroke-opacity="0.45" stroke-width="2"/>' : '';
       const inner = svgs[code] || '<circle cx="24" cy="24" r="14" fill="none" stroke="#c026d3" stroke-width="4"/>';
@@ -276,37 +300,6 @@
 
     // Резервный список курсов на случай открытия index.html локально через file://
     const FALLBACK_COURSES = [
-      {
-        file: "courses/orienteering-kp-signs.json",
-        courseId: "orienteering_kp_signs_basic",
-        category: "orienteering",
-        version: 1,
-        title: "Знаки КП в спортивном ориентировании (IOF & Карта)",
-        description: "Базовый тренажёр по пиктограммам легенд КП (Колонки D и G) и знакам карты.",
-        lessons: [{
-          lessonId: "ori_kp_preview",
-          title: "Урок 1: Знаки у КП (откройте через HTTP-сервер для всех 17 знаков)",
-          summary: "Запустите локальный сервер в папке web-catalog/, чтобы подгружать полные JSON.",
-          theory: [{ title: "Бугор, Яма, Камень, Болото", body: "Откройте через HTTP (python -m http.server 8000) или GitHub Pages для загрузки полного курса из catalog.json." }],
-          concepts: [{
-            conceptId: "kp_sign_boulder",
-            term: "Отдельный камень",
-            symbolCode: "iof_boulder",
-            questions: [{
-              questionId: "q_kp_boulder_1",
-              type: "SINGLE_CHOICE",
-              symbolCode: "iof_boulder",
-              prompt: "Сплошной чёрный треугольник остриём вверх в легенде КП — что это за объект?",
-              options: [
-                { id: "a", text: "Отдельный камень", isCorrect: true },
-                { id: "b", text: "Яма", isCorrect: false },
-                { id: "c", text: "Бугор", isCorrect: false }
-              ],
-              explanation: "Камень в легенде IOF — закрашенный треугольник остриём вверх."
-            }]
-          }]
-        }]
-      },
       {
         file: "courses/languages-greek-verbs-a.json",
         courseId: "languages_greek_verbs_a_top20",

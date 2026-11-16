@@ -1,15 +1,15 @@
 {
-  "catalogVersion": 6,
-  "catalogName": "AllTestsAreUs — Общий сайт курсов и тестов",
-  "updatedAt": "2026-11-15T17:36:00Z",
+  "catalogVersion": 8,
+  "catalogName": "Quiz Deck — Общий сайт курсов и тестов",
+  "updatedAt": "2026-11-16T07:01:00Z",
   "courses": [
     {
-      "courseId": "orienteering_kp_signs_basic",
+      "courseId": "orienteering_control_descriptions",
       "category": "orienteering",
-      "version": 3,
-      "title": "Условные знаки карты у КП (ISOM 2017-2)",
-      "description": "20 базовых условных знаков спортивных карт, у которых чаще всего устанавливаются контрольные пункты (КП): рельеф, камни, скалы, вода, растительность и постройки.",
-      "url": "courses/orienteering-kp-signs.json"
+      "version": 1,
+      "title": "Легенда КП: как читать описание контрольных пунктов (IOF)",
+      "description": "20 ключевых символов и правил официальной легенды КП, которую выдают участникам ориентирования: объект КП (колонка D), точное место призмы (колонка G) и уточнения (C, E, F, H).",
+      "url": "courses/orienteering-control-descriptions.json"
     },
     {
       "courseId": "orienteering_isom_basics",

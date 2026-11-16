@@ -137,13 +137,103 @@ fun OrienteeringSignBadge(
                     }
                     "isom_thicket" -> drawOval(IsomColors.DarkGreen, Offset(w * 0.14f, h * 0.20f), Size(w * 0.72f, h * 0.60f))
 
-                    // Совместимость со старыми кодами IOF
+                    // Пиктограммы легенд КП (IOF Control Descriptions) — Колонка D (Объект КП)
                     "iof_knoll" -> {
-                        drawOval(color = IsomColors.Black, style = stroke)
-                        drawCircle(color = IsomColors.Black, radius = w * 0.1f, center = Offset(w / 2f, h / 2f))
+                        drawOval(IsomColors.Black, Offset(w * 0.22f, h * 0.28f), Size(w * 0.56f, h * 0.44f), style = stroke)
+                        drawCircle(IsomColors.Black, w * 0.06f, Offset(w * 0.50f, h * 0.50f))
+                    }
+                    "iof_spur" -> {
+                        drawArc(IsomColors.Black, 180f, 180f, false, Offset(w * 0.22f, h * 0.24f), Size(w * 0.56f, h * 0.52f), style = stroke)
+                    }
+                    "iof_reentrant" -> {
+                        val p = Path().apply {
+                            moveTo(w * 0.20f, h * 0.72f)
+                            lineTo(w * 0.50f, h * 0.26f)
+                            lineTo(w * 0.80f, h * 0.72f)
+                        }
+                        drawPath(p, color = IsomColors.Black, style = stroke)
                     }
                     "iof_pit" -> drawPitV(IsomColors.Black, stroke)
+                    "iof_depression" -> {
+                        drawOval(IsomColors.Black, Offset(w * 0.16f, h * 0.26f), Size(w * 0.68f, h * 0.48f), style = stroke)
+                        drawLine(IsomColors.Black, Offset(w * 0.50f, h * 0.26f), Offset(w * 0.50f, h * 0.42f), sw * 0.9f)
+                        drawLine(IsomColors.Black, Offset(w * 0.50f, h * 0.74f), Offset(w * 0.50f, h * 0.58f), sw * 0.9f)
+                    }
+                    "iof_cliff" -> drawBankWithTicks(IsomColors.Black, sw * 1.1f)
                     "iof_boulder" -> drawFilledTriangle(IsomColors.Black)
+                    "iof_boulder_cluster" -> {
+                        drawSmallTriangle(w * 0.50f, h * 0.28f, w * 0.16f, IsomColors.Black)
+                        drawSmallTriangle(w * 0.30f, h * 0.68f, w * 0.16f, IsomColors.Black)
+                        drawSmallTriangle(w * 0.70f, h * 0.68f, w * 0.16f, IsomColors.Black)
+                    }
+                    "iof_marsh" -> drawMarshBars(IsomColors.Black, sw)
+                    "iof_spring" -> {
+                        drawArc(IsomColors.Black, 120f, 220f, false, Offset(w * 0.18f, h * 0.28f), Size(w * 0.38f, h * 0.44f), style = stroke)
+                        drawLine(IsomColors.Black, Offset(w * 0.42f, h * 0.50f), Offset(w * 0.86f, h * 0.50f), sw)
+                    }
+                    "iof_clearing" -> {
+                        drawRect(IsomColors.Black, Offset(w * 0.20f, h * 0.24f), Size(w * 0.60f, h * 0.52f), style = stroke)
+                    }
+                    "iof_distinct_tree" -> {
+                        drawCircle(IsomColors.Black, w * 0.20f, Offset(w * 0.50f, h * 0.42f), style = stroke)
+                        drawLine(IsomColors.Black, Offset(w * 0.50f, h * 0.62f), Offset(w * 0.50f, h * 0.84f), sw)
+                    }
+                    "iof_root_stock" -> drawCrossX(IsomColors.Black, sw * 1.15f)
+                    "iof_ruin" -> {
+                        drawLine(IsomColors.Black, Offset(w * 0.20f, h * 0.22f), Offset(w * 0.48f, h * 0.22f), sw)
+                        drawLine(IsomColors.Black, Offset(w * 0.20f, h * 0.22f), Offset(w * 0.20f, h * 0.78f), sw)
+                        drawLine(IsomColors.Black, Offset(w * 0.20f, h * 0.78f), Offset(w * 0.80f, h * 0.78f), sw)
+                        drawLine(IsomColors.Black, Offset(w * 0.80f, h * 0.78f), Offset(w * 0.80f, h * 0.45f), sw)
+                    }
+                    "iof_path_junction" -> {
+                        val dash = PathEffect.dashPathEffect(floatArrayOf(w * 0.14f, w * 0.10f), 0f)
+                        drawLine(IsomColors.Black, Offset(w * 0.14f, h * 0.16f), Offset(w * 0.86f, h * 0.84f), sw, pathEffect = dash)
+                        drawLine(IsomColors.Black, Offset(w * 0.86f, h * 0.16f), Offset(w * 0.14f, h * 0.84f), sw, pathEffect = dash)
+                    }
+
+                    // Колонка G — Положение призмы КП относительно объекта
+                    "iof_pos_n" -> drawSideDot(0.50f, 0.22f, sw)
+                    "iof_pos_ne" -> drawSideDot(0.76f, 0.24f, sw)
+                    "iof_pos_s" -> drawSideDot(0.50f, 0.78f, sw)
+                    "iof_pos_w" -> drawSideDot(0.22f, 0.50f, sw)
+                    "iof_pos_top" -> {
+                        drawArc(IsomColors.Black, 180f, 180f, false, Offset(w * 0.20f, h * 0.42f), Size(w * 0.60f, h * 0.42f), style = stroke)
+                        drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.50f, h * 0.25f))
+                    }
+                    "iof_pos_foot" -> {
+                        drawLine(IsomColors.Black, Offset(w * 0.22f, h * 0.26f), Offset(w * 0.58f, h * 0.76f), sw, StrokeCap.Round)
+                        drawLine(IsomColors.Black, Offset(w * 0.58f, h * 0.76f), Offset(w * 0.84f, h * 0.76f), sw, StrokeCap.Round)
+                        drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.68f, h * 0.62f))
+                    }
+                    "iof_pos_inside" -> {
+                        drawPitV(IsomColors.Black, stroke)
+                        drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.50f, h * 0.46f))
+                    }
+                    "iof_pos_between" -> {
+                        drawSmallTriangle(w * 0.25f, h * 0.52f, w * 0.16f, IsomColors.Black)
+                        drawSmallTriangle(w * 0.75f, h * 0.52f, w * 0.16f, IsomColors.Black)
+                        drawCircle(Color(0xFFDC2626), w * 0.10f, Offset(w * 0.50f, h * 0.52f))
+                    }
+
+                    // Колонки C и H
+                    "iof_col_c_north" -> {
+                        drawCircle(Color(0xFFDC2626), w * 0.11f, Offset(w * 0.50f, h * 0.28f))
+                        drawCircle(IsomColors.Black, w * 0.10f, Offset(w * 0.50f, h * 0.68f), style = Stroke(sw * 0.85f))
+                    }
+                    "iof_col_h_first_aid" -> {
+                        drawLine(Color(0xFFDC2626), Offset(w * 0.50f, h * 0.20f), Offset(w * 0.50f, h * 0.80f), sw * 1.4f, StrokeCap.Round)
+                        drawLine(Color(0xFFDC2626), Offset(w * 0.20f, h * 0.50f), Offset(w * 0.80f, h * 0.50f), sw * 1.4f, StrokeCap.Round)
+                    }
+                    "iof_col_h_refreshment" -> {
+                        val p = Path().apply {
+                            moveTo(w * 0.26f, h * 0.24f)
+                            lineTo(w * 0.74f, h * 0.24f)
+                            lineTo(w * 0.64f, h * 0.78f)
+                            lineTo(w * 0.36f, h * 0.78f)
+                            close()
+                        }
+                        drawPath(p, color = IsomColors.Black, style = stroke)
+                    }
 
                     else -> drawCircle(color = IsomColors.CpMagenta, radius = w * 0.34f, style = stroke)
                 }
@@ -219,4 +309,21 @@ private fun DrawScope.drawMarshBars(color: Color, strokeWidth: Float, insetX: Fl
     listOf(0.30f, 0.50f, 0.70f).forEach { y ->
         drawLine(color, Offset(w * insetX, h * y), Offset(w * (1f - insetX), h * y), strokeWidth, StrokeCap.Round)
     }
+}
+
+private fun DrawScope.drawSmallTriangle(cx: Float, cy: Float, r: Float, color: Color) {
+    val p = Path().apply {
+        moveTo(cx, cy - r)
+        lineTo(cx + r, cy + r * 0.85f)
+        lineTo(cx - r, cy + r * 0.85f)
+        close()
+    }
+    drawPath(p, color = color)
+}
+
+private fun DrawScope.drawSideDot(dotX: Float, dotY: Float, strokeWidth: Float) {
+    val w = size.width
+    val h = size.height
+    drawCircle(IsomColors.Black, w * 0.20f, Offset(w * 0.50f, h * 0.50f), style = Stroke(strokeWidth * 0.85f))
+    drawCircle(Color(0xFFDC2626), w * 0.11f, Offset(w * dotX, h * dotY))
 }

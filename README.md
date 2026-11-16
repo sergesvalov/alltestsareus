@@ -1,4 +1,4 @@
-# AllTestsAreUs — Android (Kotlin/Compose) + Docker Web Service + Jenkins CI
+# Quiz Deck — Android (Kotlin/Compose) + Docker Web Service + Jenkins CI
 
 Система микро-уроков и тестирования с **долговременным запоминанием (Spaced Repetition SM-2)**.
 На старте Android-приложение пустое — пользователь выбирает и скачивает нужные курсы с Docker-сервиса тестов (порт `8085`) или с любого другого сайта/HTML-страницы.

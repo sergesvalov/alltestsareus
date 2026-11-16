@@ -69,9 +69,9 @@ android {
     productFlavors {
         create("allInOne") {
             dimension = "topic"
-            resValue("string", "app_name", "AllTests: Умное запоминание")
+            resValue("string", "app_name", "Quiz Deck")
             buildConfigField("String", "FLAVOR_CATEGORY", "\"all\"")
-            buildConfigField("String", "FLAVOR_TITLE", "\"Все направления (Языки, Рептилии, Ориентирование)\"")
+            buildConfigField("String", "FLAVOR_TITLE", "\"Языки • Ориентирование • Рептилии\"")
         }
         create("orienteering") {
             dimension = "topic"
